@@ -10,6 +10,7 @@ import { session } from '$app/stores'
 import type User from '.'
 import type Session from '../data/session'
 import app from '../app'
+import userFromSnapshot from './snapshot'
 import handleError from '../error/handle'
 
 const auth = getAuth(app)
@@ -35,13 +36,7 @@ const freshCurrentUser = readable<User | null | undefined>(undefined, set => {
 
 			snapshotUnsubscribe = onSnapshot(
 				doc(firestore, `users/${user.uid}`),
-				snapshot =>
-					set({
-						id: snapshot.id,
-						name: (snapshot.get('name') as string | undefined) ?? null,
-						email: (snapshot.get('email') as string | undefined) ?? null,
-						cash: (snapshot.get('cash') as number | undefined) ?? 0
-					}),
+				snapshot => set(userFromSnapshot(snapshot)),
 				handleError
 			)
 		},
