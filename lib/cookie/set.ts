@@ -1,6 +1,9 @@
 import { CookieSerializeOptions, serialize } from 'cookie'
+import { sign } from 'cookie-signature'
 
 import { dev } from '$app/env'
+
+import COOKIE_SECRET from './secret'
 
 /** The minimum `Expires`. */
 const PAST = new Date(0)
@@ -26,7 +29,7 @@ const setCookie = (
 ) =>
 	serialize(
 		name,
-		value ?? '',
+		value ? sign(value, COOKIE_SECRET) : '',
 		value === null
 			? { ...DEFAULT_OPTIONS, expires: PAST, httpOnly }
 			: { ...DEFAULT_OPTIONS, maxAge, httpOnly }

@@ -1,6 +1,5 @@
-import parseCookies from '../cookie/parse'
+import getCookie from '../cookie/get'
 
-const getToken = (header: string | undefined) =>
-	parseCookies(header).token ?? null
+const getToken = (header: string | undefined) => getCookie(header, 'token')
 
 export default getToken
