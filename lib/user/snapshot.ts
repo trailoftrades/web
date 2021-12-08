@@ -5,16 +5,14 @@ export interface Snapshot {
 	get(key: string): unknown
 }
 
-const userFromSnapshot = (snapshot: Snapshot): User => {
-	const get = <Value>(key: string) =>
-		(snapshot.get(key) as Value | undefined) ?? null
+const get = <Value>(snapshot: Snapshot, key: string) =>
+	(snapshot.get(key) as Value | undefined) ?? null
 
-	return {
-		id: snapshot.id,
-		name: get('name'),
-		email: get('email'),
-		cash: get('cash')
-	}
-}
+const userFromSnapshot = (snapshot: Snapshot): User => ({
+	id: snapshot.id,
+	name: get(snapshot, 'name'),
+	email: get(snapshot, 'email'),
+	cash: get(snapshot, 'cash')
+})
 
 export default userFromSnapshot
