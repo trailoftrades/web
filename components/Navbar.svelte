@@ -6,7 +6,7 @@
 <nav>
 	<a href="/">Trail of Trades</a>
 	{#if $currentUser}
-		{$currentUser.name}
+		{$currentUser.name ?? 'Anonymous'}
 	{:else}
 		<SignIn />
 	{/if}
