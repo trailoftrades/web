@@ -13,8 +13,7 @@
 		"strict": true,
 		"esModuleInterop": true,
 		"skipLibCheck": true,
-		"forceConsistentCasingInFileNames": true,
-		"typeRoots": ["node_modules/@types", "@types"]
+		"forceConsistentCasingInFileNames": true
 	},
 	"include": ["**/*.d.ts", "**/*.ts", "**/*.svelte"],
 	"exclude": ["node_modules", ".svelte-kit", "public"]
