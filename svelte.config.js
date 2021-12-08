@@ -19,6 +19,16 @@ const config = {
 			routes: 'routes',
 			serviceWorker: 'lib/service-worker',
 			template: 'lib/index.html'
+		},
+		vite: {
+			server: {
+				fs: {
+					allow: ['.']
+				}
+			},
+			build: {
+				assetsInlineLimit: 0
+			}
 		}
 	}
 }
