@@ -24,16 +24,14 @@ const signIn = async () => {
 	const info = getAdditionalUserInfo(result)
 	if (!info) throw new Error('Unable to get additional user info')
 
-	await Promise.all([
-		info.isNewUser
-			? setDoc(doc(firestore, 'users', user.uid), {
-					name: user.displayName ?? 'Anonymous',
-					email: user.email,
-					cash: 0
-			  })
-			: null,
-		user.getIdToken().then(sendToken)
-	])
+	if (info.isNewUser)
+		await setDoc(doc(firestore, `users/${user.uid}`), {
+			name: user.displayName ?? 'Anonymous',
+			email: user.email,
+			cash: 0
+		})
+
+	await sendToken(await user.getIdToken())
 }
 
 export default signIn
