@@ -7,6 +7,7 @@ import {
 import { getFirestore, doc, setDoc } from 'firebase/firestore'
 
 import app from '../../app'
+import INITIAL_CASH from '../../user/cash/initial'
 import sendToken from '../../token/send'
 
 const auth = getAuth(app)
@@ -29,7 +30,7 @@ const signIn = async () => {
 			? setDoc(doc(firestore, `users/${user.uid}`), {
 					name: user.displayName,
 					email: user.email,
-					cash: 0
+					cash: INITIAL_CASH
 			  })
 			: null,
 		user.getIdToken().then(sendToken)
