@@ -1,10 +1,15 @@
 <script lang="ts">
+	import currentUser from '../lib/user/current'
 	import SignIn from './Auth/SignIn.svelte'
 </script>
 
 <nav>
 	<a href="/">Trail of Trades</a>
-	<SignIn />
+	{#if $currentUser}
+		{$currentUser.name}
+	{:else}
+		<SignIn />
+	{/if}
 </nav>
 
 <style lang="scss">
