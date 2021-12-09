@@ -17,6 +17,7 @@
 
 <style lang="scss">
 	@use 'shared/colors';
+	@use 'shared/z-index';
 
 	.root {
 		position: absolute;
@@ -24,6 +25,7 @@
 		left: 0;
 		right: 0;
 		padding: 1rem 1.5rem;
+		z-index: z-index.$navigation;
 	}
 
 	nav {
