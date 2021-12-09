@@ -42,7 +42,8 @@
 		text-decoration: none;
 		font-size: 2rem;
 		font-weight: 900;
-		color: colors.$black;
+		color: white;
+		text-shadow: 0.5rem 0.5rem 2rem transparentize(colors.$black, 0.6);
 		transition: opacity 0.3s;
 
 		&:hover {

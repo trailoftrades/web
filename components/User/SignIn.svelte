@@ -25,8 +25,8 @@
 	button {
 		padding: 0.6rem 1.2rem;
 		font-weight: 700;
-		color: white;
-		background: colors.$black;
+		color: colors.$black;
+		background: white;
 		border-radius: 0.5rem;
 		transition: opacity 0.3s;
 

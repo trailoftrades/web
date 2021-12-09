@@ -1,5 +1,5 @@
 <script lang="ts">
-	import background from '../../shared/background.jpg'
+	import background from '../../shared/background.png'
 	import Road from './Road.svelte'
 </script>
 
@@ -22,7 +22,7 @@
 	}
 
 	div {
-		background: url('../../shared/background.jpg') no-repeat center center;
+		background: url('../../shared/background.png') no-repeat center center;
 		background-size: cover;
 	}
 </style>
