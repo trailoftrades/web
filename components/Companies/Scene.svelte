@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<link rel="preload" as="image" type="image/jpeg" href={background} />
+	<link rel="preload" as="image" type="image/png" href={background} />
 </svelte:head>
 
 <main>
