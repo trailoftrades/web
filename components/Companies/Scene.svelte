@@ -1,6 +1,11 @@
 <script lang="ts">
+	import background from '../../shared/background.png'
 	import Road from './Road.svelte'
 </script>
+
+<svelte:head>
+	<link rel="preload" as="image" href={background} />
+</svelte:head>
 
 <main>
 	<div>Companies</div>
@@ -14,6 +19,10 @@
 		display: grid;
 		grid: 1fr auto / 1fr;
 		height: 100%;
-		background: colors.$sky;
+	}
+
+	div {
+		background: url('../../shared/background.png') no-repeat center center;
+		background-size: cover;
 	}
 </style>

@@ -23,14 +23,14 @@
 
 	.divider {
 		height: 0.4rem;
-		background-image: linear-gradient(
-			0.25turn,
-			transparent 0%,
-			transparent 40%,
-			white 40%,
-			white 100%
-		);
+		background: linear-gradient(
+				0.25turn,
+				transparent 0%,
+				transparent 40%,
+				white 40%,
+				white 100%
+			)
+			5rem 0;
 		background-size: 12rem 0.5rem;
-		background-position: 5rem 0;
 	}
 </style>
