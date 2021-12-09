@@ -16,7 +16,13 @@
 </div>
 
 <style lang="scss">
+	@use 'shared/colors';
+
 	.root {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
 		padding: 1rem 1.5rem;
 	}
 
@@ -34,7 +40,7 @@
 		text-decoration: none;
 		font-size: 2rem;
 		font-weight: 900;
-		color: black;
+		color: colors.$black;
 		transition: opacity 0.3s;
 
 		&:hover {

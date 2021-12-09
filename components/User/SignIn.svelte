@@ -20,16 +20,22 @@
 <button disabled={loading} on:click={signIn}>Sign in</button>
 
 <style lang="scss">
+	@use 'shared/colors';
+
 	button {
-		padding: 0.5rem 1rem;
+		padding: 0.6rem 1.2rem;
 		font-weight: 700;
-		background: white;
+		color: white;
+		background: colors.$black;
 		border-radius: 0.5rem;
-		box-shadow: 0 0 0.31rem 0 transparentize(black, 0.9);
-		transition: box-shadow 0.3s;
+		transition: opacity 0.3s;
 
 		&:hover {
-			box-shadow: 0 0 1.25rem 0.31rem transparentize(black, 0.9);
+			opacity: 0.7;
 		}
+	}
+
+	:disabled {
+		pointer-events: none;
 	}
 </style>

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Navbar from '../components/Navbar.svelte'
+	import Companies from '../components/Company/Companies.svelte'
 </script>
 
 <svelte:head>
@@ -7,3 +8,4 @@
 </svelte:head>
 
 <Navbar />
+<Companies />

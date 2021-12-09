@@ -30,11 +30,13 @@
 </table>
 
 <style lang="scss">
+	@use 'shared/colors';
+
 	table {
-		width: 100%;
+		min-width: 100%;
 		background: white;
 		border-spacing: 0.8rem 0.5rem;
 		border-radius: 0.5rem;
-		box-shadow: 0 0 1.25rem 0.31rem transparentize(black, 0.9);
+		box-shadow: 0 0.5rem 1.5rem 0 transparentize(colors.$black, 0.9);
 	}
 </style>

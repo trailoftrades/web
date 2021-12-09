@@ -32,7 +32,7 @@
 	}
 
 	.danger {
-		color: colors.$red;
+		color: colors.$danger;
 	}
 
 	[aria-busy='true'],

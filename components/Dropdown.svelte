@@ -45,7 +45,6 @@
 			bottom: 0;
 			left: 0;
 			pointer-events: none;
-			z-index: z-index.$dropdown - 1;
 		}
 	}
 
