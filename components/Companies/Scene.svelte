@@ -1,10 +1,10 @@
 <script lang="ts">
-	import background from '../../shared/background.png'
+	import background from '../../shared/background.jpg'
 	import Road from './Road.svelte'
 </script>
 
 <svelte:head>
-	<link rel="preload" as="image" href={background} />
+	<link rel="preload" as="image" type="image/jpeg" href={background} />
 </svelte:head>
 
 <main>
@@ -22,7 +22,7 @@
 	}
 
 	div {
-		background: url('../../shared/background.png') no-repeat center center;
+		background: url('../../shared/background.jpg') no-repeat center center;
 		background-size: cover;
 	}
 </style>
