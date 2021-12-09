@@ -1,6 +1,6 @@
-import type { Writable } from 'svelte/store'
+import type { Readable, Writable } from 'svelte/store'
 import type { Unsubscribe } from 'firebase/firestore'
-import { readable, derived } from 'svelte/store'
+import { derived } from 'svelte/store'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { getFirestore, doc, onSnapshot } from 'firebase/firestore'
 
@@ -17,44 +17,39 @@ import handleError from '../error/handle'
 const auth = getAuth(app)
 const firestore = getFirestore(app)
 
-/**
- * - `User`: Signed in.
- * - `null`: Signed out.
- * - `undefined`: Not yet loaded, use `$session.user` instead.
- */
-const freshCurrentUser = readable<User | null | undefined>(undefined, set => {
-	if (!browser) return
+const currentUser: Readable<User | null> = derived(
+	session as Writable<Session>,
+	($session, set) => {
+		set($session.user)
 
-	let snapshotUnsubscribe: Unsubscribe | null = null
+		if (!browser) return
 
-	const authUnsubscribe = onAuthStateChanged(
-		auth,
-		user => {
+		let snapshotUnsubscribe: Unsubscribe | null = null
+
+		const authUnsubscribe = onAuthStateChanged(
+			auth,
+			user => {
+				snapshotUnsubscribe?.()
+				snapshotUnsubscribe = null
+
+				sendToken(user).catch(handleError)
+
+				if (!user) return set(null)
+
+				snapshotUnsubscribe = onSnapshot(
+					doc(firestore, `users/${user.uid}`),
+					snapshot => set(userFromSnapshot(snapshot)),
+					handleError
+				)
+			},
+			handleError
+		)
+
+		return () => {
+			authUnsubscribe()
 			snapshotUnsubscribe?.()
-			snapshotUnsubscribe = null
-
-			sendToken(user).catch(handleError)
-			if (!user) return set(null)
-
-			snapshotUnsubscribe = onSnapshot(
-				doc(firestore, `users/${user.uid}`),
-				snapshot => set(userFromSnapshot(snapshot)),
-				handleError
-			)
-		},
-		handleError
-	)
-
-	return () => {
-		authUnsubscribe()
-		snapshotUnsubscribe?.()
+		}
 	}
-})
-
-const currentUser = derived(
-	[freshCurrentUser, session as Writable<Session>],
-	([$currentUser, $session]) =>
-		$currentUser === undefined ? $session.user : $currentUser
 )
 
 export default currentUser
