@@ -7,7 +7,7 @@ import {
 import { getFirestore, doc, setDoc } from 'firebase/firestore'
 
 import app from '../../app'
-import INITIAL_CASH from '../../user/cash/initial'
+import INITIAL_CASH from '../cash/initial'
 
 const auth = getAuth(app)
 const firestore = getFirestore(app)

@@ -1,13 +1,14 @@
 <script lang="ts">
 	import currentUser from '../lib/user/current'
-	import SignIn from './Auth/SignIn.svelte'
+	import UserInfo from './User/Info.svelte'
+	import SignIn from './User/SignIn.svelte'
 </script>
 
 <div class="root">
 	<nav>
 		<a href="/">Trail of Trades</a>
 		{#if $currentUser}
-			{$currentUser.name ?? 'Anonymous'}
+			<UserInfo user={$currentUser} />
 		{:else}
 			<SignIn />
 		{/if}

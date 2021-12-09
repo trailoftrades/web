@@ -1,5 +1,5 @@
 <script lang="ts">
-	import _signIn from '../../lib/auth/sign/in'
+	import _signIn from '../../lib/user/sign/in'
 	import handleError from '../../lib/error/handle'
 
 	let loading = false
