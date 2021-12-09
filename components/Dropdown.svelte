@@ -21,7 +21,12 @@
 
 <div class="root" class:active>
 	<slot name="trigger" {show} />
-	<div class="content" data-alignment={alignment} bind:this={content}>
+	<div
+		class="content"
+		aria-hidden={!active}
+		data-alignment={alignment}
+		bind:this={content}
+	>
 		<slot />
 	</div>
 </div>
@@ -54,12 +59,12 @@
 		transform: translateX(2rem);
 		opacity: 0;
 		transition: transform 0.3s, opacity 0.3s;
+	}
 
-		.active & {
-			pointer-events: all;
-			transform: none;
-			opacity: 1;
-		}
+	[aria-hidden='false'] {
+		pointer-events: all;
+		transform: none;
+		opacity: 1;
 	}
 
 	[data-alignment='left'] {
