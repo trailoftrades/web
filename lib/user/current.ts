@@ -10,6 +10,7 @@ import { session } from '$app/stores'
 import type User from '.'
 import type Session from '../data/session'
 import app from '../app'
+import sendToken from '../token/send'
 import userFromSnapshot from './snapshot'
 import handleError from '../error/handle'
 
@@ -32,6 +33,7 @@ const freshCurrentUser = readable<User | null | undefined>(undefined, set => {
 			snapshotUnsubscribe?.()
 			snapshotUnsubscribe = null
 
+			sendToken(user).catch(handleError)
 			if (!user) return set(null)
 
 			snapshotUnsubscribe = onSnapshot(

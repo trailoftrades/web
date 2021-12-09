@@ -8,7 +8,6 @@ import { getFirestore, doc, setDoc } from 'firebase/firestore'
 
 import app from '../../app'
 import INITIAL_CASH from '../../user/cash/initial'
-import sendToken from '../../token/send'
 
 const auth = getAuth(app)
 const firestore = getFirestore(app)
@@ -25,16 +24,12 @@ const signIn = async () => {
 	const info = getAdditionalUserInfo(result)
 	if (!info) throw new Error('Unable to get additional user info')
 
-	await Promise.all([
-		info.isNewUser
-			? setDoc(doc(firestore, `users/${user.uid}`), {
-					name: user.displayName,
-					email: user.email,
-					cash: INITIAL_CASH
-			  })
-			: null,
-		user.getIdToken().then(sendToken)
-	])
+	if (info.isNewUser)
+		await setDoc(doc(firestore, `users/${user.uid}`), {
+			name: user.displayName,
+			email: user.email,
+			cash: INITIAL_CASH
+		})
 }
 
 export default signIn

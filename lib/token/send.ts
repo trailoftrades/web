@@ -1,5 +1,12 @@
-const sendToken = async (token: string) => {
-	const response = await fetch('/token', { method: 'POST', body: token })
+import type { User } from 'firebase/auth'
+
+const sendToken = async (user: User | null) => {
+	const response = await fetch('/token', {
+		method: 'POST',
+		headers: { 'content-type': 'application/json' },
+		body: JSON.stringify(user && (await user.getIdToken(true)))
+	})
+
 	if (!response.ok) throw new Error(await response.text())
 }
 

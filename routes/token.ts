@@ -7,15 +7,18 @@ import setToken from '../lib/token/set'
 export const post: RequestHandler<Locals, unknown, string> = async ({
 	body: token
 }) => {
-	if (typeof token !== 'string') return { status: 400, body: 'Invalid token' }
+	if (!(token === null || typeof token === 'string'))
+		return { status: 400, body: 'Invalid token' }
 
-	try {
-		await idFromToken(token)
-	} catch {
-		return { status: 403, body: 'Unknown token' }
-	}
+	if (token !== null)
+		try {
+			await idFromToken(token)
+		} catch {
+			return { status: 403, body: 'Unknown token' }
+		}
 
 	return {
-		headers: { 'set-cookie': setToken(token) }
+		headers: { 'set-cookie': setToken(token) },
+		body: ''
 	}
 }
