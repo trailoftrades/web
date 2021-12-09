@@ -31,7 +31,6 @@
 	a {
 		align-self: flex-start;
 		margin-right: 1rem;
-		line-height: 1;
 		text-decoration: none;
 		font-size: 2rem;
 		font-weight: 900;

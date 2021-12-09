@@ -27,6 +27,7 @@
 		"prettier-plugin-svelte": "^2.5.0",
 		"sass": "^1.44.0",
 		"svelte": "^3.44.2",
+		"svelte-icons": "^2.1.0",
 		"svelte-preprocess": "^4.9.8",
 		"tslib": "^2.3.1",
 		"typescript": "^4.5.2"

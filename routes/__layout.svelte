@@ -7,6 +7,7 @@
 		box-sizing: border-box;
 		margin: 0;
 		padding: 0;
+		line-height: inherit;
 		font-family: inherit;
 		font-size: inherit;
 		border: none;
@@ -19,15 +20,21 @@
 	}
 
 	body {
+		line-height: 1;
 		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
 			Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	}
 
-	button {
+	button,
+	[role='button'] {
 		cursor: pointer;
+	}
 
-		&:disabled {
-			cursor: default;
-		}
+	button:disabled {
+		cursor: default;
+	}
+
+	svg {
+		display: block;
 	}
 </style>
