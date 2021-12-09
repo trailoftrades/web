@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Navbar from '../components/Navbar.svelte'
-	import Companies from '../components/Company/Companies.svelte'
+	import Companies from '../components/Companies/Scene.svelte'
 </script>
 
 <svelte:head>
