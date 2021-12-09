@@ -2,10 +2,22 @@
 	import _signIn from '../../lib/auth/sign/in'
 	import handleError from '../../lib/error/handle'
 
-	const signIn = () => _signIn().catch(handleError)
+	let loading = false
+
+	const signIn = async () => {
+		try {
+			if (loading) return
+
+			loading = true
+			await _signIn()
+		} catch (error) {
+			loading = false
+			handleError(error)
+		}
+	}
 </script>
 
-<button on:click={signIn}>Sign in</button>
+<button disabled={loading} on:click={signIn}>Sign in</button>
 
 <style lang="scss">
 	button {
