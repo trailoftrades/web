@@ -12,9 +12,9 @@ export const post: RequestHandler<Locals, unknown, string> = async ({
 
 	if (token !== null)
 		try {
-			await idFromToken(token)
+			if ((await idFromToken(token)) === null) throw new Error()
 		} catch {
-			return { status: 403, body: 'Unknown token' }
+			return { status: 403, body: 'Invalid token' }
 		}
 
 	return {
