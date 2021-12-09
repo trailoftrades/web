@@ -32,6 +32,8 @@
 </div>
 
 <style lang="scss">
+	@use 'shared/z-index';
+
 	.root {
 		position: relative;
 
@@ -43,6 +45,7 @@
 			bottom: 0;
 			left: 0;
 			pointer-events: none;
+			z-index: z-index.$dropdown - 1;
 		}
 	}
 
@@ -58,6 +61,7 @@
 		pointer-events: none;
 		transform: translateX(2rem);
 		opacity: 0;
+		z-index: z-index.$dropdown;
 		transition: transform 0.3s, opacity 0.3s;
 	}
 

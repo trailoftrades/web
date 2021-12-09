@@ -24,7 +24,6 @@
 	@use 'shared/colors';
 
 	tr {
-		cursor: pointer;
 		transition: opacity 0.3s;
 
 		&:hover {
