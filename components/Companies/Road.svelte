@@ -1,5 +1,7 @@
 <div>
-	<hr />
+	<span class="border" />
+	<span class="divider" />
+	<span class="border" />
 </div>
 
 <style lang="scss">
@@ -8,14 +10,20 @@
 	div {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
-		height: 4rem;
+		justify-content: space-between;
+		height: 5rem;
+		padding: 0.5rem 0;
 		background: colors.$dark-gray;
 	}
 
-	hr {
-		height: 20%;
-		background: linear-gradient(
+	.border {
+		height: 0.2rem;
+		background: colors.$yellow;
+	}
+
+	.divider {
+		height: 0.4rem;
+		background-image: linear-gradient(
 			0.25turn,
 			transparent 0%,
 			transparent 40%,
