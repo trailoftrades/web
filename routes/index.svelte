@@ -8,8 +8,6 @@
 			if (!response.ok)
 				return { status: response.status, error: await response.text() }
 
-			initialCompanies.set(await response.json())
-
 			return {}
 		} catch (error) {
 			return {
@@ -24,7 +22,6 @@
 	import type { Load } from '@sveltejs/kit'
 
 	import { COMPANY_FILTER_KEY } from '../lib/company/filter'
-	import initialCompanies from '../lib/company/initial'
 	import companies from '../lib/company/companies'
 	import UNKNOWN_ERROR_MESSAGE from '../lib/error/unknown'
 </script>
