@@ -14,19 +14,19 @@ const currentUser: Readable<User | null> = derived(
 		set($session.user)
 		if (!browser) return
 
+		let valid = true
 		let unsubscribe: Unsubscriber | null = null
-		let unsubscribed = false
 
 		import('./observe')
 			.then(({ default: observe }) => {
-				if (unsubscribed) return
+				if (!valid) return
 				unsubscribe = observe(set)
 			})
 			.catch(handleError)
 
 		return () => {
+			valid = false
 			unsubscribe?.()
-			unsubscribed = true
 		}
 	}
 )

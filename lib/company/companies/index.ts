@@ -15,19 +15,19 @@ const companies: Readable<Company[] | null> = derived(
 		if ($initial !== undefined) set($initial)
 		if (!browser) return
 
+		let valid = true
 		let unsubscribe: Unsubscriber | null = null
-		let unsubscribed = false
 
 		import('./observe')
 			.then(({ default: observe }) => {
-				if (unsubscribed) return
+				if (!valid) return
 				unsubscribe = observe($user, $filter, set)
 			})
 			.catch(handleError)
 
 		return () => {
+			valid = false
 			unsubscribe?.()
-			unsubscribed = true
 		}
 	}
 )
