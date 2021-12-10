@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Navbar from '../components/Navbar.svelte'
+	import Navbar from '../components/Navigation/Navbar.svelte'
 	import Companies from '../components/Companies/Scene.svelte'
 </script>
 

@@ -1,12 +1,14 @@
 <script lang="ts">
-	import currentUser from '../lib/user/current'
-	import UserInfo from './User/Info.svelte'
-	import SignIn from './User/SignIn.svelte'
+	import currentUser from '../../lib/user/current'
+	import Filters from './Filters.svelte'
+	import UserInfo from '../User/Info.svelte'
+	import SignIn from '../User/SignIn.svelte'
 </script>
 
 <div class="root">
 	<nav>
 		<a href="/">Trail of Trades</a>
+		<Filters />
 		{#if $currentUser}
 			<UserInfo user={$currentUser} />
 		{:else}
