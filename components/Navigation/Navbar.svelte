@@ -1,8 +1,8 @@
 <script lang="ts">
 	import currentUser from '../../lib/user/current'
 	import Filters from './Filters.svelte'
-	// import UserInfo from '../User/Info.svelte'
-	// import SignIn from '../User/SignIn.svelte'
+	import UserInfo from '../User/Info.svelte'
+	import SignIn from '../User/SignIn.svelte'
 </script>
 
 <div class="root">
@@ -10,11 +10,9 @@
 		<a href="/">Trail of Trades</a>
 		<Filters />
 		{#if $currentUser}
-			<p>{JSON.stringify($currentUser)}</p>
-			<!-- <UserInfo user={$currentUser} /> -->
+			<UserInfo user={$currentUser} />
 		{:else}
-			<p>Not signed in</p>
-			<!-- <SignIn /> -->
+			<SignIn />
 		{/if}
 	</nav>
 </div>
