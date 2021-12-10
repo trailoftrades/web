@@ -13,7 +13,7 @@
 			<p>{company.name} (${company.rate}/hour) (${company.cash} total)</p>
 		{/each}
 	{:else}
-		<p>Loading...</p>
+		<p>Uh oh! Why don't you sign in instead.</p>
 	{/if}
 </div>
 
