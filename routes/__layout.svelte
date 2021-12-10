@@ -1,3 +1,21 @@
+<script lang="ts">
+	import { getAnalytics, logEvent } from 'firebase/analytics'
+
+	import { browser } from '$app/env'
+	import { page } from '$app/stores'
+
+	import app from '../lib/app'
+
+	$: if (browser) {
+		const { path, query } = $page
+		const queryString = query.toString()
+
+		logEvent(getAnalytics(app), 'page_view', {
+			page_path: `${path}${queryString && '?'}${queryString}`
+		})
+	}
+</script>
+
 <slot />
 
 <style lang="scss" global>
