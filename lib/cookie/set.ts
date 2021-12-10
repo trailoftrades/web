@@ -1,4 +1,5 @@
-import { CookieSerializeOptions, serialize } from 'cookie'
+import type { CookieSerializeOptions } from 'cookie'
+import { serialize } from 'cookie'
 import { sign } from 'cookie-signature'
 
 import { dev } from '$app/env'

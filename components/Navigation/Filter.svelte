@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/stores'
 
+	import type { CompanyFilter } from '../../lib/company/filter'
 	import companyFilter, {
 		COMPANY_FILTER_KEY,
-		DEFAULT_COMPANY_FILTER,
-		CompanyFilter
+		DEFAULT_COMPANY_FILTER
 	} from '../../lib/company/filter'
 
 	export let id: CompanyFilter
