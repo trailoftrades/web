@@ -7,11 +7,12 @@ import { getFirestore, doc, onSnapshot } from 'firebase/firestore'
 import { browser } from '$app/env'
 import { session } from '$app/stores'
 
-import type User from '.'
 import type Session from '../data/session'
+import type User from '.'
 import app from '../app'
 import sendToken from '../token/send'
 import userFromSnapshot from './snapshot'
+import defaultUser from './default'
 import handleError from '../error/handle'
 
 const auth = getAuth(app)
@@ -21,7 +22,6 @@ const currentUser: Readable<User | null> = derived(
 	session as Writable<Session>,
 	($session, set) => {
 		set($session.user)
-
 		if (!browser) return
 
 		let snapshotUnsubscribe: Unsubscribe | null = null
@@ -38,7 +38,8 @@ const currentUser: Readable<User | null> = derived(
 
 				snapshotUnsubscribe = onSnapshot(
 					doc(firestore, `users/${user.uid}`),
-					snapshot => set(userFromSnapshot(snapshot)),
+					snapshot =>
+						set(userFromSnapshot(snapshot) ?? defaultUser(snapshot.id)),
 					handleError
 				)
 			},

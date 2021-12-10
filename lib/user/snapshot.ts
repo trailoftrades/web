@@ -1,18 +1,18 @@
 import type User from '.'
+import type Snapshot from '../snapshot'
+import exists from '../snapshot/exists'
+import get from '../snapshot/get'
+import INITIAL_CASH from './cash/initial'
 
-export interface Snapshot {
-	id: string
-	get(key: string): unknown
+const userFromSnapshot = (snapshot: Snapshot): User | null => {
+	if (!exists(snapshot)) return null
+
+	return {
+		id: snapshot.id,
+		name: get(snapshot, 'name', 'string', 'Anonymous'),
+		email: get(snapshot, 'email', 'string', '(error)'),
+		cash: get(snapshot, 'cash', 'number', INITIAL_CASH)
+	}
 }
-
-const get = <Value>(snapshot: Snapshot, key: string) =>
-	(snapshot.get(key) as Value | undefined) ?? null
-
-const userFromSnapshot = (snapshot: Snapshot): User => ({
-	id: snapshot.id,
-	name: get(snapshot, 'name'),
-	email: get(snapshot, 'email'),
-	cash: get(snapshot, 'cash')
-})
 
 export default userFromSnapshot

@@ -1,3 +1,5 @@
+import type User from '../user'
+
 export default interface Locals {
-	token: string | null
+	user: User | null
 }

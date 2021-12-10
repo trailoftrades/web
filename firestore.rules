@@ -2,19 +2,23 @@ rules_version = '2'
 
 service cloud.firestore {
 	match /databases/{database}/documents {
-		match /users/{uid} {
+		match /users/{user} {
 			allow read
 			allow create: if
-				isSignedInWith(uid) &&
+				isSignedInWith(user) &&
 				getNewData().cash == 1000
+		}
+
+		match /companies/{company} {
+			allow read
 		}
 
 		function isSignedIn() {
 			return request.auth != null
 		}
 
-		function isSignedInWith(uid) {
-			return isSignedIn() && request.auth.uid == uid
+		function isSignedInWith(user) {
+			return isSignedIn() && request.auth.uid == user
 		}
 
 		function getNewData() {
