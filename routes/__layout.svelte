@@ -4,13 +4,13 @@
 	import { browser } from '$app/env'
 	import { page } from '$app/stores'
 
-	import app from '../lib/app'
+	import getApp from '../lib/app'
 
 	$: if (browser) {
 		const { path, query } = $page
 		const queryString = query.toString()
 
-		logEvent(getAnalytics(app), 'page_view', {
+		logEvent(getAnalytics(getApp()), 'page_view', {
 			page_path: `${path}${queryString && '?'}${queryString}`
 		})
 	}

@@ -6,16 +6,16 @@ import {
 } from 'firebase/auth'
 import { getFirestore, doc, setDoc } from 'firebase/firestore'
 
-import app from '../../app'
+import getApp from '../../app'
 import INITIAL_CASH from '../cash/initial'
 
-const auth = getAuth(app)
-const firestore = getFirestore(app)
-
-const provider = new GoogleAuthProvider()
-provider.addScope('https://www.googleapis.com/auth/userinfo.email')
-
 const signIn = async () => {
+	const auth = getAuth(getApp())
+	const firestore = getFirestore(getApp())
+
+	const provider = new GoogleAuthProvider()
+	provider.addScope('https://www.googleapis.com/auth/userinfo.email')
+
 	const result = await signInWithPopup(auth, provider)
 
 	const { user } = result

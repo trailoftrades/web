@@ -9,20 +9,20 @@ import { session } from '$app/stores'
 
 import type Session from '../data/session'
 import type User from '.'
-import app from '../app'
+import getApp from '../app'
 import sendToken from '../token/send'
 import userFromSnapshot from './snapshot'
 import defaultUser from './default'
 import handleError from '../error/handle'
-
-const auth = getAuth(app)
-const firestore = getFirestore(app)
 
 const currentUser: Readable<User | null> = derived(
 	session as Writable<Session>,
 	($session, set) => {
 		set($session.user)
 		if (!browser) return
+
+		const auth = getAuth(getApp())
+		const firestore = getFirestore(getApp())
 
 		let snapshotUnsubscribe: Unsubscribe | null = null
 

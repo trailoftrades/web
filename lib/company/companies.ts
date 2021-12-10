@@ -13,7 +13,7 @@ import {
 import { browser } from '$app/env'
 
 import type Company from '.'
-import app from '../app'
+import getApp from '../app'
 import initialCompanies from './initial'
 import currentUser from '../user/current'
 import companyFilter from './filter'
@@ -21,13 +21,13 @@ import companyFromSnapshot from './snapshot'
 import TOP_COMPANIES_LIMIT from './top'
 import handleError from '../error/handle'
 
-const firestore = getFirestore(app)
-
 const companies: Readable<Company[] | null> = derived(
 	[initialCompanies, currentUser, companyFilter],
 	([$initial, $user, $filter], set) => {
 		if ($initial !== undefined) set($initial)
 		if (!browser) return
+
+		const firestore = getFirestore(getApp())
 
 		switch ($filter) {
 			case 'top':

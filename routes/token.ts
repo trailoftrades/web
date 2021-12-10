@@ -6,9 +6,13 @@ import setToken from '../lib/token/set'
 import UNKNOWN_ERROR_MESSAGE from '../lib/error/unknown'
 
 export const post: RequestHandler<Locals, unknown, string> = async ({
+	headers,
 	body: token
 }) => {
 	try {
+		if (headers['content-type'] !== 'application/json')
+			return { status: 400, body: 'Invalid content type' }
+
 		if (!(token === null || typeof token === 'string'))
 			return { status: 400, body: 'Invalid token' }
 

@@ -1,9 +1,7 @@
 import { getAuth, signOut as _signOut } from 'firebase/auth'
 
-import app from '../../app'
+import getApp from '../../app'
 
-const auth = getAuth(app)
-
-const signOut = () => _signOut(auth)
+const signOut = () => _signOut(getAuth(getApp()))
 
 export default signOut
