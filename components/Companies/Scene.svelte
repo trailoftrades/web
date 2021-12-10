@@ -10,23 +10,16 @@
 </svelte:head>
 
 <main>
-	<div>
-		<Navbar />
-		<Companies />
-	</div>
+	<Navbar />
+	<Companies />
 	<Road />
 </main>
 
 <style lang="scss">
 	main {
 		display: grid;
-		grid: 1fr auto / 1fr;
+		grid: auto 1fr auto / 1fr;
 		height: 100%;
-	}
-
-	div {
-		display: grid;
-		grid: auto 1fr / 1fr;
 		background: url('../../shared/background.png') no-repeat center center;
 		background-size: cover;
 	}
