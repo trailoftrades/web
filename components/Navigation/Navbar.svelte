@@ -40,7 +40,6 @@
 
 	a {
 		align-self: flex-start;
-		margin-right: 1rem;
 		text-decoration: none;
 		font-size: 2rem;
 		font-weight: 900;
@@ -49,7 +48,7 @@
 		transition: opacity 0.3s;
 
 		&:hover {
-			opacity: 0.5;
+			opacity: 0.7;
 		}
 	}
 </style>

@@ -3,10 +3,15 @@
 </script>
 
 <div>
-	<Filter id="top">Top companies</Filter>
+	<Filter id="top">Top</Filter>
 	<Filter id="owned">My companies</Filter>
-	<Filter id="invested">My investments</Filter>
+	<Filter id="invested">Investments</Filter>
 </div>
 
 <style lang="scss">
+	div {
+		display: flex;
+		align-items: center;
+		margin: 0 1rem;
+	}
 </style>
