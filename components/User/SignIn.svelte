@@ -1,5 +1,4 @@
 <script lang="ts">
-	import _signIn from '../../lib/user/sign/in'
 	import handleError from '../../lib/error/handle'
 
 	let loading = false
@@ -7,9 +6,10 @@
 	const signIn = async () => {
 		try {
 			if (loading) return
-
 			loading = true
-			await _signIn()
+
+			const { default: signIn } = await import('../../lib/user/sign/in')
+			await signIn()
 		} catch (error) {
 			loading = false
 			handleError(error)

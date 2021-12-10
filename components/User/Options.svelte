@@ -1,7 +1,6 @@
 <script lang="ts">
 	import SignOut from 'svelte-icons/fa/FaSignOutAlt.svelte'
 
-	import _signOut from '../../lib/user/sign/out'
 	import handleError from '../../lib/error/handle'
 	import Option from './Option.svelte'
 
@@ -10,9 +9,10 @@
 	const signOut = async () => {
 		try {
 			if (signOutLoading) return
-
 			signOutLoading = true
-			await _signOut()
+
+			const { default: signOut } = await import('../../lib/user/sign/out')
+			await signOut()
 		} catch (error) {
 			signOutLoading = false
 			handleError(error)

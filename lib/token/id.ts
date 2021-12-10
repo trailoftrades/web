@@ -3,9 +3,10 @@ import { getAuth } from 'firebase-admin/auth'
 
 import getApp from '../app/admin'
 
+const auth = getAuth(getApp())
+
 const idFromToken = async (token: string) => {
 	try {
-		const auth = getAuth(getApp())
 		return (await auth.verifyIdToken(token)).uid
 	} catch (error) {
 		switch ((error as FirebaseError)?.code) {

@@ -1,19 +1,13 @@
 <script lang="ts">
-	import { getAnalytics, logEvent } from 'firebase/analytics'
-
 	import { browser } from '$app/env'
 	import { page } from '$app/stores'
 
-	import getApp from '../lib/app'
+	import handleError from '../lib/error/handle'
 
-	$: if (browser) {
-		const { path, query } = $page
-		const queryString = query.toString()
-
-		logEvent(getAnalytics(getApp()), 'page_view', {
-			page_path: `${path}${queryString && '?'}${queryString}`
-		})
-	}
+	$: if (browser)
+		import('../lib/analytics/page')
+			.then(({ default: setPage }) => setPage($page))
+			.catch(handleError)
 </script>
 
 <slot />
