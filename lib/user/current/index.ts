@@ -15,15 +15,18 @@ const currentUser: Readable<User | null> = derived(
 		if (!browser) return
 
 		let unsubscribe: Unsubscriber | null = null
+		let unsubscribed = false
 
 		import('./observe')
 			.then(({ default: observe }) => {
+				if (unsubscribed) return
 				unsubscribe = observe(set)
 			})
 			.catch(handleError)
 
 		return () => {
 			unsubscribe?.()
+			unsubscribed = true
 		}
 	}
 )
