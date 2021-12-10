@@ -1,17 +1,33 @@
 <script lang="ts">
-	import Buildings from './Buildings.svelte'
+	import background from '../../shared/background.png'
+	import Navbar from '../Navigation/Navbar.svelte'
+	import Companies from './Companies.svelte'
 	import Road from './Road.svelte'
 </script>
 
-<div>
-	<Buildings />
+<svelte:head>
+	<link rel="preload" as="image" type="image/png" href={background} />
+</svelte:head>
+
+<main>
+	<div>
+		<Navbar />
+		<Companies />
+	</div>
 	<Road />
-</div>
+</main>
 
 <style lang="scss">
-	div {
+	main {
 		display: grid;
 		grid: 1fr auto / 1fr;
 		height: 100%;
+	}
+
+	div {
+		display: grid;
+		grid: auto 1fr / 1fr;
+		background: url('../../shared/background.png') no-repeat center center;
+		background-size: cover;
 	}
 </style>

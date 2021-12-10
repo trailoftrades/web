@@ -26,7 +26,6 @@
 	import { COMPANY_FILTER_KEY } from '../lib/company/filter'
 	import initialCompanies from '../lib/company/initial'
 	import UNKNOWN_ERROR_MESSAGE from '../lib/error/unknown'
-	import Navbar from '../components/Navigation/Navbar.svelte'
 	import Companies from '../components/Companies/Scene.svelte'
 </script>
 
@@ -34,5 +33,4 @@
 	<title>Trail of Trades</title>
 </svelte:head>
 
-<Navbar />
 <Companies />

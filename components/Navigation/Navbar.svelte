@@ -22,10 +22,7 @@
 	@use 'shared/z-index';
 
 	.root {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
+		position: relative;
 		padding: 1rem 1.5rem;
 		z-index: z-index.$navigation;
 	}
