@@ -22,18 +22,9 @@
 	import type { Load } from '@sveltejs/kit'
 
 	import { COMPANY_FILTER_KEY } from '../lib/company/filter'
-	import companies from '../lib/company/companies'
 	import UNKNOWN_ERROR_MESSAGE from '../lib/error/unknown'
 </script>
 
 <svelte:head>
 	<title>Trail of Trades</title>
 </svelte:head>
-
-{#if $companies}
-	{#each $companies as company (company.id)}
-		<p>{JSON.stringify(company)}</p>
-	{/each}
-{:else}
-	<p>Restricted</p>
-{/if}
