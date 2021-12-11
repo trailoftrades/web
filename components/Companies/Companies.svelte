@@ -22,7 +22,7 @@
 		{#each $companies as company (company.id)}
 			<Company {company} {maxCash} />
 		{/each}
-	{:else}
+	{:else if $companies === null}
 		<p>Uh oh! Why don't you sign in instead.</p>
 	{/if}
 </div>

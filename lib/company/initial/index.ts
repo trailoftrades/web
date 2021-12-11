@@ -6,7 +6,7 @@ import type Company from '..'
 /**
  * - `Company[]`: Successfully loaded companies.
  * - `null`: Restricted.
- * - `undefined`: Not yet loaded.
+ * - `undefined`: Not loaded.
  */
 const initialCompanies: Writable<Company[] | null | undefined> = writable()
 

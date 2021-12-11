@@ -9,10 +9,15 @@ import currentUser from '../../user/current'
 import companyFilter from '../filter'
 import handleError from '../../error/handle'
 
-const companies: Readable<Company[] | null> = derived(
+/**
+ * - `Company[]`: Successfully loaded companies.
+ * - `null`: Restricted.
+ * - `undefined`: Not loaded.
+ */
+const companies: Readable<Company[] | null | undefined> = derived(
 	[initialCompanies, currentUser, companyFilter],
 	([$initial, $user, $filter], set) => {
-		if ($initial !== undefined) set($initial)
+		set($initial)
 		if (!browser) return
 
 		let valid = true

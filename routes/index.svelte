@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-	export const load: Load = async ({ fetch, page }) => {
+	export const load: Load = async ({ page, fetch }) => {
 		try {
 			const response = await fetch(
 				`/api/companies?filter=${
