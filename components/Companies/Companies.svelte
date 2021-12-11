@@ -5,10 +5,8 @@
 	export let top: DOMRect | null
 	export let bottom: DOMRect | null
 
-	$: maxCash = ($companies ?? []).reduce(
-		(max, { cash }) => Math.max(max, cash),
-		0
-	)
+	$: maxCash =
+		$companies?.reduce((max, { cash }) => Math.max(max, cash), 0) ?? 0
 </script>
 
 <div
