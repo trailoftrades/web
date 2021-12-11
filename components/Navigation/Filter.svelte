@@ -6,23 +6,17 @@
 		COMPANY_FILTER_KEY,
 		DEFAULT_COMPANY_FILTER
 	} from '../../lib/company/filter'
+	import queryStringWith from '../../lib/query/with/string'
 
 	export let id: CompanyFilter
 
+	$: href = `/${queryStringWith(
+		$page.query,
+		COMPANY_FILTER_KEY,
+		id === DEFAULT_COMPANY_FILTER ? null : id
+	)}`
+
 	$: active = id === $companyFilter
-
-	$: href = (() => {
-		const query = new URLSearchParams($page.query)
-
-		id === DEFAULT_COMPANY_FILTER
-			? query.delete(COMPANY_FILTER_KEY)
-			: query.set(COMPANY_FILTER_KEY, id)
-
-		const { path } = $page
-		const queryString = query.toString()
-
-		return `${path}${queryString && '?'}${queryString}`
-	})()
 </script>
 
 <a {href} aria-current={active && 'page'}>
