@@ -1,10 +1,12 @@
 <script lang="ts">
+	import { fade } from 'svelte/transition'
+
 	import type Company from '../../lib/company'
 
 	export let company: Company
 </script>
 
-<main>
+<main transition:fade={{ duration: 150 }}>
 	<h1>{company.name}</h1>
 </main>
 
