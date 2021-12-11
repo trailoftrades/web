@@ -27,6 +27,7 @@
 	import type Company from '../lib/company'
 	import UNKNOWN_ERROR_MESSAGE from '../lib/error/unknown'
 	import Companies from '../components/Companies/Scene.svelte'
+	import Overlay from '../components/Company/Overlay.svelte'
 
 	export let company: Company
 </script>
@@ -35,10 +36,5 @@
 	<title>{company.name} | Trail of Trades</title>
 </svelte:head>
 
-<Companies />
-
-<div
-	style="position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: white; z-index: 150;"
->
-	<h1>{company.name}</h1>
-</div>
+<Companies inBackground />
+<Overlay {company} />
