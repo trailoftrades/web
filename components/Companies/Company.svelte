@@ -16,8 +16,8 @@
 	"
 >
 	<h3>{company.name}</h3>
-	<p>${formatNumber(company.rate)}/hour</p>
-	<p>${formatNumber(company.cash)}</p>
+	<p class="rate">{formatNumber(company.rate)}</p>
+	<p class="cash">{formatNumber(company.cash)}</p>
 </div>
 
 <style lang="scss">
@@ -38,6 +38,7 @@
 		height: calc(var(--cash) * #{$max-height});
 		overflow: hidden;
 		margin-left: $spacing + $border-width;
+		padding: 0.7rem 0.75rem;
 		text-align: center;
 		color: #ddd;
 		background: transparentize(#bbb, 0.3);
@@ -69,7 +70,30 @@
 		}
 	}
 
+	h3 {
+		line-height: 1.2;
+		font-size: 1.3rem;
+		font-weight: 900;
+	}
+
 	p {
 		margin-top: 0.5rem;
+		font-weight: 700;
+
+		&::before {
+			content: '$';
+		}
+
+		&::after {
+			opacity: 0.7;
+		}
+	}
+
+	.rate::after {
+		content: '/hour';
+	}
+
+	.cash::after {
+		content: ' net worth';
 	}
 </style>
