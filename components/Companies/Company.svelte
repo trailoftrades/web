@@ -9,6 +9,7 @@
 </script>
 
 <div
+	role="button"
 	style="
 		--cash: {relativeCash.toFixed(2)};
 		--color: {company.color};
@@ -22,6 +23,8 @@
 <style lang="scss">
 	@use 'shared/colors';
 
+	$max-height: 90%;
+
 	$spacing: 1rem;
 	$border-width: 0.3rem;
 
@@ -32,7 +35,7 @@
 		align-items: center;
 		position: relative;
 		width: 12rem;
-		height: calc(var(--cash) * 90%);
+		height: calc(var(--cash) * #{$max-height});
 		overflow: hidden;
 		margin-left: $spacing + $border-width;
 		text-align: center;
@@ -48,6 +51,10 @@
 			from {
 				height: 0;
 			}
+		}
+
+		&:hover {
+			height: calc(var(--cash) * #{$max-height} + 0.5rem);
 		}
 
 		&::before {
