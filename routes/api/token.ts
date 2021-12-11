@@ -1,9 +1,9 @@
 import type { RequestHandler } from '@sveltejs/kit'
 
-import type Locals from '../lib/data/locals'
-import idFromToken from '../lib/token/id'
-import setToken from '../lib/token/set'
-import UNKNOWN_ERROR_MESSAGE from '../lib/error/unknown'
+import type Locals from '../../lib/data/locals'
+import idFromToken from '../../lib/token/id'
+import setToken from '../../lib/token/set'
+import UNKNOWN_ERROR_MESSAGE from '../../lib/error/unknown'
 
 export const post: RequestHandler<Locals, unknown, string> = async ({
 	headers,

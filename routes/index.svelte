@@ -2,7 +2,9 @@
 	export const load: Load = async ({ fetch, page }) => {
 		try {
 			const response = await fetch(
-				`/companies?filter=${page.query.get(COMPANY_FILTER_KEY) ?? ''}`
+				`/api/companies?filter=${
+					page.query.get(COMPANY_FILTER_KEY) ?? DEFAULT_COMPANY_FILTER
+				}`
 			)
 
 			if (!response.ok)
@@ -23,7 +25,10 @@
 <script lang="ts">
 	import type { Load } from '@sveltejs/kit'
 
-	import { COMPANY_FILTER_KEY } from '../lib/company/filter'
+	import {
+		COMPANY_FILTER_KEY,
+		DEFAULT_COMPANY_FILTER
+	} from '../lib/company/filter'
 	import initialCompanies from '../lib/company/initial'
 	import UNKNOWN_ERROR_MESSAGE from '../lib/error/unknown'
 	import Companies from '../components/Companies/Scene.svelte'
