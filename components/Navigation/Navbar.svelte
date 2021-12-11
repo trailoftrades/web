@@ -1,11 +1,21 @@
+<script lang="ts" context="module">
+	export const position = writable<DOMRect | null>(null)
+</script>
+
 <script lang="ts">
+	import { writable } from 'svelte/store'
+
+	import resize from '../../lib/resize'
 	import currentUser from '../../lib/user/current'
 	import Filters from './Filters.svelte'
 	import UserInfo from '../User/Info.svelte'
 	import SignIn from '../User/SignIn.svelte'
+
+	let root: HTMLElement | null = null
+	$: $position = ($resize, root && root.getBoundingClientRect())
 </script>
 
-<div class="root">
+<div class="root" bind:this={root}>
 	<nav>
 		<a href="/">Trail of Trades</a>
 		<Filters />

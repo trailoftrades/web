@@ -1,8 +1,8 @@
 <script lang="ts">
 	import background from '../../shared/background.png'
-	import Navbar from '../Navigation/Navbar.svelte'
+	import Navbar, { position as navbar } from '../Navigation/Navbar.svelte'
 	import Companies from './Companies.svelte'
-	import Road from './Road.svelte'
+	import Road, { position as road } from './Road.svelte'
 </script>
 
 <svelte:head>
@@ -11,14 +11,15 @@
 
 <main>
 	<Navbar />
-	<Companies />
+	<Companies top={$navbar} bottom={$road} />
 	<Road />
 </main>
 
 <style lang="scss">
 	main {
-		display: grid;
-		grid: auto 1fr auto / 1fr;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 		height: 100%;
 		background: url('../../shared/background.png') no-repeat center center;
 		background-size: cover;

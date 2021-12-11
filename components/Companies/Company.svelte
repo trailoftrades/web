@@ -8,7 +8,12 @@
 	$: relativeCash = company.cash / maxCash
 </script>
 
-<div style="--cash: {relativeCash.toFixed(2)}; --color: {company.color};">
+<div
+	style="
+		--cash: {relativeCash.toFixed(2)};
+		--color: {company.color};
+	"
+>
 	<h3>{company.name}</h3>
 	<p>${formatNumber(company.rate)}/hour</p>
 	<p>${formatNumber(company.cash)}</p>
