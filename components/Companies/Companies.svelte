@@ -40,6 +40,10 @@
 		height: var(--height);
 	}
 
+	[aria-hidden='true'] {
+		display: none;
+	}
+
 	p + :global(p) {
 		margin-left: 2rem;
 	}

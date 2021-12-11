@@ -27,9 +27,17 @@
 		align-items: center;
 		width: 12rem;
 		height: calc(var(--cash) * 90%);
+		overflow: hidden;
 		text-align: center;
 		background: var(--color);
 		transition: height 0.3s;
+		animation: rise 0.3s;
+
+		@keyframes rise {
+			from {
+				height: 0;
+			}
+		}
 	}
 
 	p {
