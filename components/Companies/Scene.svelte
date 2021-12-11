@@ -9,14 +9,14 @@
 	<link rel="preload" as="image" type="image/png" href={background} />
 </svelte:head>
 
-<main>
+<div>
 	<Navbar />
 	<Companies top={$navbar} bottom={$road} />
 	<Road />
-</main>
+</div>
 
 <style lang="scss">
-	main {
+	div {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
