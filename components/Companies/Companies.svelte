@@ -12,7 +12,7 @@
 </script>
 
 <div
-	aria-hidden={!(top && bottom)}
+	hidden={!(top && bottom)}
 	style="
 		--top: {top?.bottom.toFixed(2) ?? 0}px;
 		--left: {bottom?.left.toFixed(2) ?? 0}px;
@@ -40,7 +40,7 @@
 		height: var(--height);
 	}
 
-	[aria-hidden='true'] {
+	[hidden] {
 		display: none;
 	}
 
