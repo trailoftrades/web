@@ -1,6 +1,6 @@
-const queryString = (query: URLSearchParams) => {
+const queryString = (query: URLSearchParams, prefix: string | null = '?') => {
 	const string = query.toString()
-	return `${string && '?'}${string}`
+	return `${string && (prefix ?? '')}${string}`
 }
 
 export default queryString

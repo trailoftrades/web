@@ -25,16 +25,17 @@
 	import type { Load } from '@sveltejs/kit'
 
 	import type Company from '../lib/company'
+	import overlay from '../lib/overlay'
 	import UNKNOWN_ERROR_MESSAGE from '../lib/error/unknown'
-	import Companies from '../components/Companies/Scene.svelte'
 	import Overlay from '../components/Company/Overlay.svelte'
 
 	export let company: Company
+
+	$: $overlay = true
 </script>
 
 <svelte:head>
 	<title>{company.name} | Trail of Trades</title>
 </svelte:head>
 
-<Companies inBackground />
 <Overlay {company} />

@@ -5,19 +5,19 @@
 	export let top: DOMRect | null
 	export let bottom: DOMRect | null
 
+	$: position = top &&
+		bottom && [
+			`--top: ${top.bottom.toFixed(2)}px`,
+			`--left: ${bottom.left.toFixed(2)}px`,
+			`--width: ${bottom.width.toFixed(2)}px`,
+			`--height: ${(bottom.top - top.bottom).toFixed(2)}px`
+		]
+
 	$: maxCash =
 		$companies?.reduce((max, { cash }) => Math.max(max, cash), 0) ?? 0
 </script>
 
-<div
-	hidden={!(top && bottom)}
-	style="
-		--top: {top?.bottom.toFixed(2) ?? 0}px;
-		--left: {bottom?.left.toFixed(2) ?? 0}px;
-		--width: {bottom?.width.toFixed(2) ?? 0}px;
-		--height: {top && bottom ? (bottom.top - top.bottom).toFixed(2) : 0}px;
-	"
->
+<div hidden={!position} style={position?.join(';')}>
 	{#if $companies}
 		{#each $companies as company (company.id)}
 			<Company {company} {maxCash} />

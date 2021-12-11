@@ -30,12 +30,12 @@
 		DEFAULT_COMPANY_FILTER
 	} from '../lib/company/filter'
 	import initialCompanies from '../lib/company/initial'
+	import overlay from '../lib/overlay'
 	import UNKNOWN_ERROR_MESSAGE from '../lib/error/unknown'
-	import Companies from '../components/Companies/Scene.svelte'
+
+	$: $overlay = false
 </script>
 
 <svelte:head>
 	<title>Trail of Trades</title>
 </svelte:head>
-
-<Companies />

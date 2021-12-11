@@ -3,6 +3,7 @@
 	import { page } from '$app/stores'
 
 	import handleError from '../lib/error/handle'
+	import Companies from '../components/Companies/Scene.svelte'
 
 	$: if (browser)
 		import('../lib/analytics/page')
@@ -10,6 +11,7 @@
 			.catch(handleError)
 </script>
 
+<Companies />
 <slot />
 
 <style lang="scss" global>
