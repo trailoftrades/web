@@ -8,17 +8,17 @@
 	$: relativeCash = company.cash / maxCash
 </script>
 
-<div
-	role="button"
+<a
+	href={`/${company.id}`}
 	style="
 		--cash: {relativeCash.toFixed(2)};
 		--color: {company.color};
 	"
 >
-	<h3>{company.name}</h3>
-	<p class="rate">{formatNumber(company.rate)}</p>
-	<p class="cash">{formatNumber(company.cash)}</p>
-</div>
+	<span class="name">{company.name}</span>
+	<span class="rate">{formatNumber(company.rate)}</span>
+	<span class="cash">{formatNumber(company.cash)}</span>
+</a>
 
 <style lang="scss">
 	@use 'shared/colors';
@@ -28,7 +28,7 @@
 	$spacing: 1rem;
 	$border-width: 0.3rem;
 
-	div {
+	a {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -40,6 +40,7 @@
 		margin-left: $spacing + $border-width;
 		padding: 0.7rem 0.75rem;
 		text-align: center;
+		text-decoration: none;
 		color: #ddd;
 		background: transparentize(#bbb, 0.3);
 		box-shadow: 0 0 0 $border-width #555,
@@ -70,13 +71,14 @@
 		}
 	}
 
-	h3 {
+	.name {
 		line-height: 1.2;
 		font-size: 1.3rem;
 		font-weight: 900;
 	}
 
-	p {
+	.rate,
+	.cash {
 		margin-top: 0.5rem;
 		font-weight: 700;
 
