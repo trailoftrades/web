@@ -12,7 +12,7 @@
 <Dropdown alignment="right">
 	<button slot="trigger" let:show class="trigger" on:click={show}>
 		<span class="name">{user.name ?? 'Anonymous'}</span>
-		<span class="cash">${user.cash ?? INITIAL_CASH}</span>
+		<span class="cash">{user.cash ?? INITIAL_CASH}</span>
 		<Down />
 	</button>
 	<Options />
@@ -47,6 +47,10 @@
 
 	.cash {
 		color: colors.$success;
+
+		&::before {
+			content: '$';
+		}
 	}
 
 	.trigger > :global(svg) {
