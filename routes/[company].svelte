@@ -21,12 +21,13 @@
 <script lang="ts">
 	import type { Load } from '@sveltejs/kit'
 
+	import { page } from '$app/stores'
+
 	import type Company from '../lib/company'
 	import createCompanyStore from '../lib/company/store/create'
 	import overlay from '../lib/overlay'
 	import UNKNOWN_ERROR_MESSAGE from '../lib/error/unknown'
 	import Overlay from '../components/Company/Overlay.svelte'
-	import { page } from '$app/stores'
 
 	export let initial: Company | null
 	$: company = createCompanyStore($page.params.company, initial)
