@@ -1,15 +1,11 @@
 <script lang="ts">
-	import { browser } from '$app/env'
-	import { page } from '$app/stores'
-
-	import handleError from '../lib/error/handle'
+	import Analytics from '../components/Analytics.svelte'
+	import Progress from '../components/Progress.svelte'
 	import Companies from '../components/Companies/Scene.svelte'
-
-	$: if (browser)
-		import('../lib/analytics/page')
-			.then(({ default: setPage }) => setPage($page))
-			.catch(handleError)
 </script>
+
+<Analytics />
+<Progress />
 
 <Companies />
 <slot />
