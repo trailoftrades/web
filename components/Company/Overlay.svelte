@@ -3,11 +3,11 @@
 
 	import type Company from '../../lib/company'
 
-	export let company: Company
+	export let company: Company | null
 </script>
 
 <main transition:fade={{ duration: 150 }}>
-	<h1>{company.name}</h1>
+	<h1>{company?.name ?? 'Company not found'}</h1>
 	<a href="/">Close</a>
 </main>
 

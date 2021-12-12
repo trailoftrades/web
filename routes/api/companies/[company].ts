@@ -8,14 +8,9 @@ export const get: RequestHandler<Locals, unknown, string> = async ({
 	params: { company: id }
 }) => {
 	try {
-		if (typeof id !== 'string') return { status: 400, body: 'Invalid ID' }
-
-		const company = await getCompany(id)
-		if (!company) return { status: 404, body: 'Company not found' }
-
 		return {
 			headers: { 'content-type': 'application/json' },
-			body: JSON.stringify(company)
+			body: JSON.stringify(await getCompany(id))
 		}
 	} catch (error) {
 		return {

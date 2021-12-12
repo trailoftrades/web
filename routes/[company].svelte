@@ -1,16 +1,13 @@
 <script lang="ts" context="module">
 	export const load: Load = async ({ page, fetch }) => {
 		try {
-			const id = page.params.company
-			if (typeof id !== 'string') return { status: 400, error: 'Invalid ID' }
-
-			const response = await fetch(`/api/companies/${id}`)
+			const response = await fetch(`/api/companies/${page.params.company}`)
 
 			if (!response.ok)
 				return { status: response.status, error: await response.text() }
 
 			return {
-				props: { company: await response.json() }
+				props: { initial: await response.json() }
 			}
 		} catch (error) {
 			return {
@@ -25,17 +22,20 @@
 	import type { Load } from '@sveltejs/kit'
 
 	import type Company from '../lib/company'
+	import createCompanyStore from '../lib/company/store/create'
 	import overlay from '../lib/overlay'
 	import UNKNOWN_ERROR_MESSAGE from '../lib/error/unknown'
 	import Overlay from '../components/Company/Overlay.svelte'
+	import { page } from '$app/stores'
 
-	export let company: Company
+	export let initial: Company | null
+	$: company = createCompanyStore($page.params.company, initial)
 
 	$: $overlay = true
 </script>
 
 <svelte:head>
-	<title>{company.name} | Trail of Trades</title>
+	<title>{$company?.name ?? 'Company not found'} | Trail of Trades</title>
 </svelte:head>
 
-<Overlay {company} />
+<Overlay company={$company} />
