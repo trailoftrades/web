@@ -9,10 +9,7 @@ import companyFromSnapshot from '../snapshot'
 
 const firestore = getFirestore(getApp())
 
-const getInitialCompanies = async (
-	user: User | null,
-	filter: CompanyFilter
-) => {
+const getCompanies = async (user: User | null, filter: CompanyFilter) => {
 	switch (filter) {
 		case 'top': {
 			const { docs } = await firestore
@@ -43,4 +40,4 @@ const getInitialCompanies = async (
 	}
 }
 
-export default getInitialCompanies
+export default getCompanies

@@ -6,7 +6,7 @@ import {
 	DEFAULT_COMPANY_FILTER,
 	companyFilters
 } from '../../../lib/company/filter'
-import getInitialCompanies from '../../../lib/company/initial/get'
+import getCompanies from '../../../lib/company/companies/get'
 import UNKNOWN_ERROR_MESSAGE from '../../../lib/error/unknown'
 
 export const get: RequestHandler<Locals, unknown, string> = async ({
@@ -23,7 +23,7 @@ export const get: RequestHandler<Locals, unknown, string> = async ({
 
 		return {
 			headers: { 'content-type': 'application/json' },
-			body: JSON.stringify(await getInitialCompanies(user, filter))
+			body: JSON.stringify(await getCompanies(user, filter))
 		}
 	} catch (error) {
 		return {

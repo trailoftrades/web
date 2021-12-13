@@ -2,23 +2,25 @@ import type { Readable, Unsubscriber } from 'svelte/store'
 import { derived } from 'svelte/store'
 
 import { browser } from '$app/env'
+import { page } from '$app/stores'
 
 import type Company from '..'
-import initialCompanies from './initial'
-import currentUser from '../../user/current'
-import companyFilter from '../filter'
+import initialCompany from './initial'
 import handleError from '../../error/handle'
 
 /**
- * - `Company[]`: Successfully loaded companies.
- * - `null`: Restricted.
+ * - `Company`: Successfully loaded company.
+ * - `null`: Not found.
  * - `undefined`: Not loaded.
  */
-const companies: Readable<Company[] | null | undefined> = derived(
-	[initialCompanies, currentUser, companyFilter],
-	([$initial, $user, $filter], set) => {
+const company: Readable<Company | null | undefined> = derived(
+	[initialCompany, page],
+	([$initial, $page], set) => {
 		set($initial)
 		if (!browser) return
+
+		const id = $page.params.company
+		if (!id) return
 
 		let valid = true
 		let unsubscribe: Unsubscriber | null = null
@@ -26,7 +28,7 @@ const companies: Readable<Company[] | null | undefined> = derived(
 		import('./observe')
 			.then(({ default: observe }) => {
 				if (!valid) return
-				unsubscribe = observe($user, $filter, set)
+				unsubscribe = observe(id, set)
 			})
 			.catch(handleError)
 
@@ -37,4 +39,4 @@ const companies: Readable<Company[] | null | undefined> = derived(
 	}
 )
 
-export default companies
+export default company

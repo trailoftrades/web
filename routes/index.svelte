@@ -29,7 +29,7 @@
 		COMPANY_FILTER_KEY,
 		DEFAULT_COMPANY_FILTER
 	} from '../lib/company/filter'
-	import initialCompanies from '../lib/company/initial'
+	import initialCompanies from '../lib/company/companies/initial'
 	import overlay from '../lib/overlay'
 	import UNKNOWN_ERROR_MESSAGE from '../lib/error/unknown'
 

@@ -1,13 +1,15 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition'
 
-	import type Company from '../../lib/company'
-
-	export let company: Company | null
+	import company from '../../lib/company/current'
 </script>
 
+<svelte:head>
+	<title>{$company?.name ?? 'Company not found'}</title>
+</svelte:head>
+
 <main transition:fade={{ duration: 150 }}>
-	<h1>{company?.name ?? 'Company not found'}</h1>
+	<h1>{$company?.name ?? 'Company not found'}</h1>
 	<a href="/">Close</a>
 	<slot />
 </main>
