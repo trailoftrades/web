@@ -21,6 +21,7 @@
 	$distance: 50vw;
 
 	.root {
+		flex-shrink: 0;
 		position: relative;
 		height: 10rem;
 		margin: 0 1.25rem 3.13rem;

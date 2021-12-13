@@ -30,6 +30,7 @@
 	a {
 		$underline: 0.2rem;
 
+		flex-shrink: 0;
 		position: relative;
 		padding: 0 0.3rem (0.3rem + $underline);
 		text-decoration: none;

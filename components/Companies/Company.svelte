@@ -29,6 +29,7 @@
 	$border-width: 0.3rem;
 
 	a {
+		flex-shrink: 0;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;

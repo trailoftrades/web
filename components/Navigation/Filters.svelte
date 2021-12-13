@@ -10,6 +10,7 @@
 
 <style lang="scss">
 	div {
+		flex-shrink: 0;
 		display: flex;
 		align-items: center;
 		margin: 0 1rem;

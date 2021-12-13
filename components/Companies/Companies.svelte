@@ -29,6 +29,7 @@
 
 <style lang="scss">
 	div {
+		flex-shrink: 0;
 		display: flex;
 		align-items: flex-end;
 		position: fixed;

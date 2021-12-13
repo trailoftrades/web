@@ -32,6 +32,7 @@
 	@use 'shared/z-index';
 
 	.root {
+		flex-shrink: 0;
 		position: relative;
 		padding: 1rem 1.5rem;
 		z-index: z-index.$navigation;
@@ -46,6 +47,7 @@
 	}
 
 	a {
+		flex-shrink: 0;
 		align-self: flex-start;
 		text-decoration: none;
 		font-size: 2rem;
