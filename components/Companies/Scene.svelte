@@ -10,14 +10,14 @@
 	<link rel="preload" as="image" type="image/png" href={background} />
 </svelte:head>
 
-<div aria-hidden={$overlay}>
+<main aria-hidden={$overlay}>
 	<Navbar />
 	<Companies top={$navbar} bottom={$road} />
 	<Road />
-</div>
+</main>
 
 <style lang="scss">
-	div {
+	main {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;

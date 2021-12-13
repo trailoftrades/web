@@ -53,7 +53,7 @@
 		font-size: 2rem;
 		font-weight: 900;
 		color: white;
-		text-shadow: 0.5rem 0.5rem 2rem transparentize(colors.$black, 0.6);
+		text-shadow: 0.5rem 0.5rem 2rem rgba(colors.$black, 0.4);
 		transition: opacity 0.3s;
 
 		&:hover {

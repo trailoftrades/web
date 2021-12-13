@@ -37,6 +37,6 @@
 		background: white;
 		border-spacing: 0.8rem 0.5rem;
 		border-radius: 0.5rem;
-		box-shadow: 0 0.5rem 1.5rem 0 transparentize(colors.$black, 0.9);
+		box-shadow: 0 0.5rem 1.5rem 0 rgba(colors.$black, 0.1);
 	}
 </style>

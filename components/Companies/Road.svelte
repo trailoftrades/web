@@ -26,7 +26,7 @@
 		height: 10rem;
 		margin: 0 1.25rem 3.13rem;
 		background: colors.$dark-gray;
-		box-shadow: 0 2rem 2rem 1rem transparentize(colors.$black, 0.5);
+		box-shadow: 0 2rem 2rem 1rem rgba(colors.$black, 0.5);
 		transform: perspective($distance) rotateX(40deg);
 		transform-origin: bottom;
 

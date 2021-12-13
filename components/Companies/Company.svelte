@@ -43,9 +43,9 @@
 		text-align: center;
 		text-decoration: none;
 		color: #ddd;
-		background: transparentize(#bbb, 0.3);
+		background: rgba(#bbb, 0.7);
 		box-shadow: 0 0 0 $border-width #555,
-			0 0.5rem 1.5rem $border-width transparentize(colors.$black, 0.7);
+			0 0.5rem 1.5rem $border-width rgba(colors.$black, 0.3);
 		border-radius: 1px;
 		transition: height 0.3s;
 		animation: rise 0.3s;

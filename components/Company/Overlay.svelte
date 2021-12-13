@@ -1,21 +1,15 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition'
 
-	import company from '../../lib/company/current'
+	import Navbar from './Navbar.svelte'
 </script>
 
-<svelte:head>
-	<title>{$company?.name ?? 'Company not found'}</title>
-</svelte:head>
-
 <main transition:fade={{ duration: 150 }}>
-	<h1>{$company?.name ?? 'Company not found'}</h1>
-	<a href="/">Close</a>
+	<Navbar />
 	<slot />
 </main>
 
 <style lang="scss">
-	@use 'shared/colors';
 	@use 'shared/z-index';
 
 	main {
@@ -25,20 +19,8 @@
 		bottom: 0;
 		left: 0;
 		padding: 2rem 2.5rem;
-		color: colors.$black;
-		background: transparentize(white, 0.5);
+		background: rgba(white, 0.5);
 		backdrop-filter: blur(0.63rem);
 		z-index: z-index.$overlay;
-	}
-
-	h1 {
-		font-size: 3rem;
-		font-weight: 900;
-	}
-
-	a {
-		display: inline-block;
-		margin-top: 1rem;
-		font-weight: 700;
 	}
 </style>
