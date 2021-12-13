@@ -56,7 +56,7 @@
 
 	.trigger > :global(svg) {
 		flex-shrink: 0;
-		height: 1.2rem;
+		width: 1.05rem;
 		margin-left: 0.8rem;
 		transform: translateY(0.05rem);
 	}
