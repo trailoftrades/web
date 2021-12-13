@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition'
 
-	import Navbar from './Navbar.svelte'
+	import Navbar from './Navigation/Navbar.svelte'
 </script>
 
 <main transition:fade={{ duration: 150 }}>

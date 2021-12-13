@@ -35,7 +35,3 @@
 
 	$: $overlay = false
 </script>
-
-<svelte:head>
-	<title>Trail of Trades</title>
-</svelte:head>

@@ -42,13 +42,14 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		max-width: 62.5rem;
+		max-width: 87.5rem;
 		margin: 0 auto;
 	}
 
 	a {
 		flex-shrink: 0;
 		align-self: flex-start;
+		white-space: nowrap;
 		text-decoration: none;
 		font-size: 2rem;
 		font-weight: 900;

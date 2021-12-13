@@ -26,6 +26,7 @@
 		display: flex;
 		align-items: center;
 		padding: 0.5rem 1rem;
+		white-space: nowrap;
 		font-weight: 700;
 		color: colors.$black;
 		background: white;

@@ -1,29 +1,24 @@
 <script lang="ts">
 	import { page } from '$app/stores'
 
-	import type { CompanyFilter } from '../../lib/company/filter'
-	import companyFilter, {
-		COMPANY_FILTER_KEY,
-		DEFAULT_COMPANY_FILTER
-	} from '../../lib/company/filter'
-	import queryStringWith from '../../lib/query/with/string'
+	import company from '../../../lib/company/current'
+	import queryString from '../../../lib/query/string'
 
-	export let id: CompanyFilter
+	const URL_MATCH = /^\/[^\/]+\/?([^\/]*)/
+
+	export let path = ''
 	export let name: string
 
-	$: href = `/${queryStringWith(
-		$page.query,
-		COMPANY_FILTER_KEY,
-		id === DEFAULT_COMPANY_FILTER ? null : id
-	)}`
+	$: id = $page.params.company
+	$: href = `/${id}${path && '/'}${path}${queryString($page.query)}`
 
-	$: active = id === $companyFilter
+	$: active = $page.path.match(URL_MATCH)?.[1] === path
 </script>
 
 <svelte:head>
 	{#if active}
 		<title>
-			{id === DEFAULT_COMPANY_FILTER ? '' : `${name} - `}Trail of Trades
+			{$company ? `${name} - ${$company.name}` : 'Company not found'}
 		</title>
 	{/if}
 </svelte:head>
@@ -44,8 +39,7 @@
 		text-decoration: none;
 		font-size: 1.2rem;
 		font-weight: 700;
-		color: white;
-		text-shadow: 0.5rem 0.5rem 2rem rgba(colors.$black, 0.4);
+		color: colors.$black;
 		transition: color 0.3s, opacity 0.3s;
 
 		&:hover {

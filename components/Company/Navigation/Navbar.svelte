@@ -1,23 +1,35 @@
 <script lang="ts">
 	import Times from 'svelte-icons/fa/FaTimes.svelte'
 
-	import company from '../../lib/company/current'
+	import company from '../../../lib/company/current'
+	import Pages from './Pages.svelte'
 </script>
 
-<nav>
-	<h1>{$company?.name ?? 'Company not found'}</h1>
-	<a href="/">
-		<Times />
-	</a>
-</nav>
+<div class="root">
+	<nav>
+		<h1>{$company?.name ?? 'Company not found'}</h1>
+		<Pages />
+		<a href="/">
+			<Times />
+		</a>
+	</nav>
+</div>
 
 <style lang="scss">
 	@use 'shared/colors';
+	@use 'shared/z-index';
+
+	.root {
+		position: relative;
+		z-index: z-index.$navigation;
+	}
 
 	nav {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		max-width: 112.5rem;
+		margin: 0 auto;
 	}
 
 	h1 {
@@ -29,6 +41,7 @@
 	a {
 		$dimension: 3rem;
 
+		flex-shrink: 0;
 		position: relative;
 		width: $dimension;
 		height: $dimension;
