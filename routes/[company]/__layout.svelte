@@ -23,11 +23,11 @@
 
 	import { page } from '$app/stores'
 
-	import type Company from '../lib/company'
-	import createCompanyStore from '../lib/company/store/create'
-	import overlay from '../lib/overlay'
-	import UNKNOWN_ERROR_MESSAGE from '../lib/error/unknown'
-	import Overlay from '../components/Company/Overlay.svelte'
+	import type Company from '../../lib/company'
+	import createCompanyStore from '../../lib/company/store/create'
+	import overlay from '../../lib/overlay'
+	import UNKNOWN_ERROR_MESSAGE from '../../lib/error/unknown'
+	import Overlay from '../../components/Company/Overlay.svelte'
 
 	export let initial: Company | null
 	$: company = createCompanyStore($page.params.company, initial)
@@ -39,4 +39,6 @@
 	<title>{$company?.name ?? 'Company not found'} | Trail of Trades</title>
 </svelte:head>
 
-<Overlay company={$company} />
+<Overlay company={$company}>
+	<slot />
+</Overlay>

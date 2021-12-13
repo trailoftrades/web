@@ -20,6 +20,7 @@
 		line-height: inherit;
 		font-family: inherit;
 		font-size: inherit;
+		color: inherit;
 		border: none;
 		outline: none;
 	}
