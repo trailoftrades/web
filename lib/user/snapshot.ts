@@ -10,7 +10,8 @@ const userFromSnapshot = (snapshot: Snapshot): User | null => {
 		id: snapshot.id,
 		name: get(snapshot, 'name', 'string', null),
 		email: get(snapshot, 'email', 'string', null),
-		cash: get(snapshot, 'cash', 'number', null)
+		cash: get(snapshot, 'cash', 'number', null),
+		created: get(snapshot, 'created', 'millis', null)
 	}
 }
 

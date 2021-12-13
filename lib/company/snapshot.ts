@@ -8,11 +8,12 @@ const companyFromSnapshot = (snapshot: Snapshot): Company | null => {
 
 	return {
 		id: snapshot.id,
-		owner: get(snapshot, 'owner', 'string', '_'),
-		name: get(snapshot, 'name', 'string', 'Unnamed Company'),
-		color: get(snapshot, 'color', 'string', 'red'),
-		rate: get(snapshot, 'rate', 'number', 0),
-		cash: get(snapshot, 'cash', 'number', 0)
+		owner: get(snapshot, 'owner', 'string', null),
+		name: get(snapshot, 'name', 'string', null),
+		color: get(snapshot, 'color', 'string', null),
+		rate: get(snapshot, 'rate', 'number', null),
+		cash: get(snapshot, 'cash', 'number', null),
+		created: get(snapshot, 'created', 'millis', null)
 	}
 }
 
