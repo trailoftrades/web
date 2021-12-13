@@ -1,7 +1,7 @@
 import type { RequestHandler } from '@sveltejs/kit'
 
 import type Locals from '../../lib/data/locals'
-import idFromToken from '../../lib/token/id'
+import initialUserFromToken from '../../lib/token/user'
 import setToken from '../../lib/token/set'
 import UNKNOWN_ERROR_MESSAGE from '../../lib/error/unknown'
 
@@ -18,7 +18,7 @@ export const post: RequestHandler<Locals, unknown, string> = async ({
 
 		if (token !== null)
 			try {
-				if ((await idFromToken(token)) === null) throw new Error()
+				if (!(await initialUserFromToken(token))) throw new Error()
 			} catch {
 				return { status: 403, body: 'Invalid token' }
 			}

@@ -1,19 +1,18 @@
 import { getFirestore } from 'firebase-admin/firestore'
 
 import getApp from '../app/admin'
-import idFromToken from '../token/id'
+import initialUserFromToken from '../token/user'
 import userFromSnapshot from './snapshot'
-import defaultUser from './default'
 
 const firestore = getFirestore(getApp())
 
 const userFromToken = async (token: string) => {
-	const id = await idFromToken(token)
-	if (id === null) return null
+	const initial = await initialUserFromToken(token)
+	if (!initial) return null
 
 	return (
-		userFromSnapshot(await firestore.doc(`users/${id}`).get()) ??
-		defaultUser(id)
+		userFromSnapshot(await firestore.doc(`users/${initial.id}`).get()) ??
+		initial
 	)
 }
 

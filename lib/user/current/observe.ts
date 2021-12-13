@@ -6,7 +6,7 @@ import type User from '..'
 import getApp from '../../app'
 import sendToken from '../../token/send'
 import userFromSnapshot from '../snapshot'
-import defaultUser from '../default'
+import userFromAuth from '../auth'
 import handleError from '../../error/handle'
 
 const auth = getAuth(getApp())
@@ -29,7 +29,7 @@ const observeCurrentUser = (
 
 			snapshotUnsubscribe = onSnapshot(
 				doc(firestore, `users/${user.uid}`),
-				snapshot => set(userFromSnapshot(snapshot) ?? defaultUser(snapshot.id)),
+				snapshot => set(userFromSnapshot(snapshot) ?? userFromAuth(user)),
 				handleError
 			)
 		},
