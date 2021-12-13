@@ -15,11 +15,14 @@ const firestore = getFirestore(getApp())
 const observeCurrentUser = (
 	set: (value: User | null) => void
 ): Unsubscriber => {
+	let valid = true
 	let snapshotUnsubscribe: Unsubscriber | null = null
 
 	const authUnsubscribe: Unsubscriber = onAuthStateChanged(
 		auth,
 		user => {
+			if (!valid) return
+
 			snapshotUnsubscribe?.()
 			snapshotUnsubscribe = null
 
@@ -37,6 +40,8 @@ const observeCurrentUser = (
 	)
 
 	return () => {
+		valid = false
+
 		authUnsubscribe()
 		snapshotUnsubscribe?.()
 	}
