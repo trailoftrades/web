@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Chart from 'svelte-icons/fa/FaChartLine.svelte'
-	import Building from 'svelte-icons/fa/FaBuilding.svelte'
+	import User from 'svelte-icons/fa/FaUserTie.svelte'
 	import Cash from 'svelte-icons/fa/FaHandHoldingUsd.svelte'
 
 	import Page from './Page.svelte'
@@ -11,7 +11,7 @@
 		<Chart />
 	</Page>
 	<Page path="operations" name="Operations">
-		<Building />
+		<User />
 	</Page>
 	<Page path="invest" name="Invest">
 		<Cash />
