@@ -1,17 +1,17 @@
 import type { RequestHandler } from '@sveltejs/kit'
 
 import type Locals from '../../../lib/data/locals'
-import getCompany from '../../../lib/company/get'
+import getUser from '../../../lib/user/get'
 import HttpError from '../../../lib/error/http'
 import UNKNOWN_ERROR_MESSAGE from '../../../lib/error/unknown'
 
 export const get: RequestHandler<Locals, unknown, string> = async ({
-	params: { company: id }
+	params: { user: id }
 }) => {
 	try {
 		return {
 			headers: { 'content-type': 'application/json' },
-			body: JSON.stringify(await getCompany(id))
+			body: JSON.stringify(await getUser(id))
 		}
 	} catch (error) {
 		return {

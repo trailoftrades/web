@@ -3,6 +3,7 @@ import type { RequestHandler } from '@sveltejs/kit'
 import type Locals from '../../lib/data/locals'
 import initialUserFromToken from '../../lib/token/user'
 import setToken from '../../lib/token/set'
+import HttpError from '../../lib/error/http'
 import UNKNOWN_ERROR_MESSAGE from '../../lib/error/unknown'
 
 export const post: RequestHandler<Locals, unknown, string> = async ({
@@ -11,16 +12,16 @@ export const post: RequestHandler<Locals, unknown, string> = async ({
 }) => {
 	try {
 		if (headers['content-type'] !== 'application/json')
-			return { status: 400, body: 'Invalid content type' }
+			throw new HttpError(400, 'Invalid content type')
 
 		if (!(token === null || typeof token === 'string'))
-			return { status: 400, body: 'Invalid token' }
+			throw new HttpError(400, 'Invalid token')
 
 		if (token !== null)
 			try {
 				if (!(await initialUserFromToken(token))) throw new Error()
 			} catch {
-				return { status: 403, body: 'Invalid token' }
+				throw new HttpError(403, 'Invalid token')
 			}
 
 		return {
@@ -29,7 +30,7 @@ export const post: RequestHandler<Locals, unknown, string> = async ({
 		}
 	} catch (error) {
 		return {
-			status: 500,
+			status: error instanceof HttpError ? error.code : 500,
 			body: error instanceof Error ? error.message : UNKNOWN_ERROR_MESSAGE
 		}
 	}

@@ -1,13 +1,13 @@
 <script lang="ts">
 	import Times from 'svelte-icons/fa/FaTimes.svelte'
 
-	import company from '../../../lib/company/current'
+	import Info from '../Info.svelte'
 	import Pages from './Pages.svelte'
 </script>
 
 <div class="root">
 	<nav>
-		<h1>{$company?.name ?? 'Company not found'}</h1>
+		<Info />
 		<Pages />
 		<a href="/">
 			<Times />
@@ -30,12 +30,6 @@
 		align-items: center;
 		max-width: 112.5rem;
 		margin: 0 auto;
-	}
-
-	h1 {
-		font-size: 3rem;
-		font-weight: 900;
-		color: colors.$black;
 	}
 
 	a {

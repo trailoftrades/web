@@ -1,5 +1,7 @@
 import type { User } from 'firebase/auth'
 
+import HttpError from '../error/http'
+
 const sendToken = async (user: User | null) => {
 	const response = await fetch('/api/token', {
 		method: 'POST',
@@ -7,7 +9,7 @@ const sendToken = async (user: User | null) => {
 		body: JSON.stringify(user && (await user.getIdToken(true)))
 	})
 
-	if (!response.ok) throw new Error(await response.text())
+	if (!response.ok) throw await HttpError.fromResponse(response)
 }
 
 export default sendToken

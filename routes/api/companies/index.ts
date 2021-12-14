@@ -7,6 +7,7 @@ import {
 	companyFilters
 } from '../../../lib/company/filter'
 import getCompanies from '../../../lib/company/companies/get'
+import HttpError from '../../../lib/error/http'
 import UNKNOWN_ERROR_MESSAGE from '../../../lib/error/unknown'
 
 export const get: RequestHandler<Locals, unknown, string> = async ({
@@ -27,7 +28,7 @@ export const get: RequestHandler<Locals, unknown, string> = async ({
 		}
 	} catch (error) {
 		return {
-			status: 500,
+			status: error instanceof HttpError ? error.code : 500,
 			body: error instanceof Error ? error.message : UNKNOWN_ERROR_MESSAGE
 		}
 	}
