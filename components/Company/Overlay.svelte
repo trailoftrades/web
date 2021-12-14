@@ -25,6 +25,7 @@
 		right: 0;
 		bottom: 0;
 		left: 0;
+		overflow-y: auto;
 		background: rgba(white, 0.5);
 		backdrop-filter: blur(0.63rem);
 		z-index: z-index.$overlay;
