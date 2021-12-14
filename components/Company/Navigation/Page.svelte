@@ -10,7 +10,9 @@
 	export let name: string
 
 	$: id = $page.params.company
-	$: href = `/${id}${path && '/'}${path}${queryString($page.query)}`
+	$: href = `/${encodeURIComponent(id)}${path && '/'}${path}${queryString(
+		$page.query
+	)}`
 
 	$: active = $page.path.match(URL_MATCH)?.[1] === path
 </script>

@@ -5,19 +5,19 @@
 	export let company: Company
 	export let maxCash: number
 
-	$: relativeCash = company.cash / maxCash
+	$: relativeCash = (company.cash ?? 0) / maxCash
 </script>
 
 <a
-	href={`/${company.id}`}
+	href={`/${encodeURIComponent(company.id)}`}
 	style="
 		--cash: {relativeCash.toFixed(2)};
 		--color: {company.color};
 	"
 >
 	<span class="name">{company.name}</span>
-	<span class="rate">{formatNumber(company.rate)}</span>
-	<span class="cash">{formatNumber(company.cash)}</span>
+	<span class="rate">{formatNumber(company.rate ?? 0)}</span>
+	<span class="cash">{formatNumber(company.cash ?? 0)}</span>
 </a>
 
 <style lang="scss">

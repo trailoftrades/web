@@ -15,7 +15,8 @@ const initialUserFromToken = async (token: string): Promise<User | null> => {
 			id: user.uid,
 			name: (user.name as string | undefined) ?? null,
 			email: user.email ?? null,
-			cash: null
+			cash: null,
+			created: null
 		}
 	} catch (error) {
 		switch ((error as FirebaseError)?.code) {

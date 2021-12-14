@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"type": "module",
 	"scripts": {
-		"lint": "eslint .",
+		"lint": "tsc --noEmit && eslint .",
 		"format": "prettier --write .",
 		"dev": "svelte-kit dev",
 		"build": "svelte-kit build",

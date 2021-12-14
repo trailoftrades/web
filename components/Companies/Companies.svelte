@@ -14,7 +14,7 @@
 		]
 
 	$: maxCash =
-		$companies?.reduce((max, { cash }) => Math.max(max, cash), 0) ?? 0
+		$companies?.reduce((max, { cash }) => Math.max(max, cash ?? 0), 0) ?? 0
 </script>
 
 <div hidden={!position} style={position?.join(';')}>
