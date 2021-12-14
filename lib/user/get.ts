@@ -1,9 +1,9 @@
 import { getFirestore } from 'firebase-admin/firestore'
 
-import getApp from '../app/admin'
+import app from '../app/admin'
 import userFromSnapshot from './snapshot'
 
-const firestore = getFirestore(getApp())
+const firestore = getFirestore(app)
 
 const getUser = async (id: string) =>
 	userFromSnapshot(await firestore.doc(`users/${id}`).get())

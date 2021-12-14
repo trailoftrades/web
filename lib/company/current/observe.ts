@@ -2,11 +2,11 @@ import type { Unsubscriber } from 'svelte/store'
 import { getFirestore, onSnapshot, doc } from 'firebase/firestore'
 
 import type Company from '..'
-import getApp from '../../app'
+import app from '../../app'
 import companyFromSnapshot from '../snapshot'
 import handleError from '../../error/handle'
 
-const firestore = getFirestore(getApp())
+const firestore = getFirestore(app)
 
 const observeCompany = (
 	id: string,

@@ -1,10 +1,10 @@
 import { getFirestore } from 'firebase-admin/firestore'
 
-import getApp from '../app/admin'
+import app from '../app/admin'
 import initialUserFromToken from '../token/user'
 import userFromSnapshot from './snapshot'
 
-const firestore = getFirestore(getApp())
+const firestore = getFirestore(app)
 
 const userFromToken = async (token: string) => {
 	const initial = await initialUserFromToken(token)

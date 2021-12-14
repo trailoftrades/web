@@ -3,14 +3,14 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { getFirestore, doc, onSnapshot } from 'firebase/firestore'
 
 import type User from '..'
-import getApp from '../../app'
+import app from '../../app'
 import sendToken from '../../token/send'
 import userFromSnapshot from '../snapshot'
 import userFromAuth from '../auth'
 import handleError from '../../error/handle'
 
-const auth = getAuth(getApp())
-const firestore = getFirestore(getApp())
+const auth = getAuth(app)
+const firestore = getFirestore(app)
 
 const observeCurrentUser = (
 	set: (value: User | null) => void

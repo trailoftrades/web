@@ -1,11 +1,11 @@
 <script lang="ts">
 	import company from '../../lib/company/current'
-	import Chart from '../../components/Chart.svelte'
+	import Chart from '../../components/Chart/Time.svelte'
 </script>
 
 <div>
 	<p>Evaluation for {$company?.name ?? 'unknown company'}</p>
-	<Chart />
+	<Chart points={[]} />
 </div>
 
 <style lang="scss">

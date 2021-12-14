@@ -5,7 +5,7 @@ import {
 	cert
 } from 'firebase-admin/app'
 
-const getApp = () => {
+const app = (() => {
 	try {
 		return getDefaultApp()
 	} catch (error) {
@@ -20,6 +20,6 @@ const getApp = () => {
 			storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET
 		})
 	}
-}
+})()
 
-export default getApp
+export default app

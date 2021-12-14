@@ -3,11 +3,11 @@ import { getFirestore } from 'firebase-admin/firestore'
 import type User from '../../user'
 import type Company from '..'
 import type { CompanyFilter } from '../filter'
-import getApp from '../../app/admin'
+import app from '../../app/admin'
 import TOP_COMPANIES_LIMIT from '../top'
 import companyFromSnapshot from '../snapshot'
 
-const firestore = getFirestore(getApp())
+const firestore = getFirestore(app)
 
 const getCompanies = async (user: User | null, filter: CompanyFilter) => {
 	switch (filter) {

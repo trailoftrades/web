@@ -12,12 +12,12 @@ import {
 import type User from '../../user'
 import type Company from '..'
 import type { CompanyFilter } from '../filter'
-import getApp from '../../app'
+import app from '../../app'
 import TOP_COMPANIES_LIMIT from '../top'
 import companyFromSnapshot from '../snapshot'
 import handleError from '../../error/handle'
 
-const firestore = getFirestore(getApp())
+const firestore = getFirestore(app)
 
 const observeCompanies = (
 	user: User | null,

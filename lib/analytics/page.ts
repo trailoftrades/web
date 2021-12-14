@@ -1,10 +1,10 @@
 import type { Page } from '@sveltejs/kit'
 import { getAnalytics, logEvent } from 'firebase/analytics'
 
-import getApp from '../app'
+import app from '../app'
 import queryString from '../query/string'
 
-const analytics = getAnalytics(getApp())
+const analytics = getAnalytics(app)
 
 const setPage = ({ path, query }: Page) =>
 	logEvent(analytics, 'page_view', {

@@ -1,8 +1,8 @@
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 
-import getApp from '../../app'
+import app from '../../app'
 
-const auth = getAuth(getApp())
+const auth = getAuth(app)
 
 const provider = new GoogleAuthProvider()
 provider.addScope('https://www.googleapis.com/auth/userinfo.email')

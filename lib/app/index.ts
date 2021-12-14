@@ -1,7 +1,7 @@
 import type { FirebaseError } from 'firebase/app'
 import { getApp as getDefaultApp, initializeApp } from 'firebase/app'
 
-const getApp = () => {
+const app = (() => {
 	try {
 		return getDefaultApp()
 	} catch (error) {
@@ -17,6 +17,6 @@ const getApp = () => {
 			measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 		})
 	}
-}
+})()
 
-export default getApp
+export default app

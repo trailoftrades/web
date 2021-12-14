@@ -2,9 +2,9 @@ import type { FirebaseError } from 'firebase-admin/app'
 import { getAuth } from 'firebase-admin/auth'
 
 import type User from '../user'
-import getApp from '../app/admin'
+import app from '../app/admin'
 
-const auth = getAuth(getApp())
+const auth = getAuth(app)
 
 /** Gets user data only from auth data. */
 const initialUserFromToken = async (token: string): Promise<User | null> => {

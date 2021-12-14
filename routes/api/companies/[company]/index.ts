@@ -1,9 +1,9 @@
 import type { RequestHandler } from '@sveltejs/kit'
 
-import type Locals from '../../../lib/data/locals'
-import getCompany from '../../../lib/company/get'
-import HttpError from '../../../lib/error/http'
-import UNKNOWN_ERROR_MESSAGE from '../../../lib/error/unknown'
+import type Locals from '../../../../lib/data/locals'
+import getCompany from '../../../../lib/company/get'
+import HttpError from '../../../../lib/error/http'
+import UNKNOWN_ERROR_MESSAGE from '../../../../lib/error/unknown'
 
 export const get: RequestHandler<Locals, unknown, string> = async ({
 	params: { company: id }

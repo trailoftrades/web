@@ -1,9 +1,9 @@
 import { getFirestore } from 'firebase-admin/firestore'
 
-import getApp from '../app/admin'
+import app from '../app/admin'
 import companyFromSnapshot from './snapshot'
 
-const firestore = getFirestore(getApp())
+const firestore = getFirestore(app)
 
 const getCompany = async (id: string) =>
 	companyFromSnapshot(await firestore.doc(`companies/${id}`).get())
