@@ -25,7 +25,7 @@
 		position: relative;
 		max-width: 112.5rem;
 		width: 100%;
-		margin: 0 auto 2rem;
+		margin: 0 auto;
 		padding: 2rem 2.5rem;
 		z-index: z-index.$navigation;
 	}
