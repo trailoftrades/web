@@ -37,7 +37,7 @@
 		align-items: center;
 		position: relative;
 		width: 12rem;
-		height: calc(max(#{$min-height}, var(--cash) * #{$max-height}));
+		height: max($min-height, var(--cash) * $max-height);
 		overflow: hidden;
 		margin-left: $spacing + $border-width;
 		padding: 0.7rem 0.75rem;
@@ -58,7 +58,7 @@
 		}
 
 		&:hover {
-			height: calc(max(#{$min-height}, var(--cash) * #{$max-height}) + 0.5rem);
+			height: calc(max($min-height, var(--cash) * $max-height) + 0.5rem);
 		}
 
 		&::before {
