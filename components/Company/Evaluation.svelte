@@ -18,7 +18,15 @@
 
 <div>
 	{#if points}
-		<Chart {points} />
+		<Chart
+			{points}
+			fontSize={20}
+			fontWeight="bold"
+			textColor="#1c1c1e"
+			backgroundColor="#12b412"
+			borderColor="#12b41277"
+			borderWidth={4}
+		/>
 	{/if}
 </div>
 

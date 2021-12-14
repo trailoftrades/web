@@ -44,7 +44,7 @@
 		grid-auto-flow: column;
 		grid-template-rows: auto 1fr;
 		grid-auto-columns: 1fr;
-		gap: 1rem 2.5rem;
+		gap: 2rem 2.5rem;
 		padding: 8rem calc($horizontal-padding - $offset) 2rem
 			calc($horizontal-padding + $offset);
 	}

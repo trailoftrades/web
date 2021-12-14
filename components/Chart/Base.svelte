@@ -20,8 +20,8 @@
 
 	export let components: ChartComponentLike[]
 
-	export let canvas: HTMLCanvasElement | null = null
-	export let chart: Chart<Type> | null = null
+	let canvas: HTMLCanvasElement | null = null
+	let chart: Chart<Type> | null = null
 
 	$: if (canvas) Chart.register(...components)
 	$: if (canvas && !chart) chart = new Chart(canvas, { type, data, options })
