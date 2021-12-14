@@ -8,6 +8,9 @@
 	export let evaluations: Evaluation[] | null
 
 	$: points = evaluations?.map(({ time: x, [property]: y }) => ({ x, y }))
+
+	const formatLabel = (cash: number) =>
+		`$${formatNumber(cash)}${property === 'rate' ? `/hour` : ''}`
 </script>
 
 <h4 data-property={property}>
@@ -20,6 +23,7 @@
 	{#if points}
 		<Chart
 			{points}
+			label={formatLabel}
 			fontSize={20}
 			fontWeight="bold"
 			textColor="#1c1c1e"

@@ -5,15 +5,18 @@
 		LinearScale,
 		TimeScale,
 		PointElement,
-		LineElement
+		LineElement,
+		Tooltip
 	} from 'chart.js'
 	import 'chartjs-adapter-date-fns'
 
 	import type Point from '../../lib/point'
-	import formatNumber from '../../lib/format/number'
+	import formatDate from '../../lib/format/date'
 	import Chart from './Base.svelte'
 
 	export let points: Point[]
+	export let label: (value: number) => string
+
 	export let unit: TimeUnit | null = 'day'
 
 	export let fontFamily =
@@ -35,8 +38,14 @@
 		}
 	}
 
-	const formatCash = (cash: string | number) =>
-		`$${typeof cash === 'string' ? cash : formatNumber(cash)}`
+	$: tooltipLabel = {
+		backgroundColor: backgroundColor ?? 'white',
+		borderColor: borderColor ?? 'white',
+		borderWidth: 0
+	}
+
+	const formatLabel = (value: string | number) =>
+		typeof value === 'string' ? value : label(value)
 </script>
 
 <Chart
@@ -52,7 +61,16 @@
 				ticks
 			},
 			y: {
-				ticks: { ...ticks, callback: formatCash }
+				ticks: { ...ticks, callback: formatLabel }
+			}
+		},
+		plugins: {
+			tooltip: {
+				callbacks: {
+					title: ([{ parsed }]) => formatDate(parsed.x, true),
+					label: ({ parsed }) => formatLabel(parsed.y),
+					labelColor: () => tooltipLabel
+				}
 			}
 		}
 	}}
@@ -61,6 +79,7 @@
 		LinearScale,
 		TimeScale,
 		PointElement,
-		LineElement
+		LineElement,
+		Tooltip
 	]}
 />
