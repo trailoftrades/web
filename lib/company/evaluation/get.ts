@@ -22,7 +22,7 @@ const getEvaluations = async (id: string) => {
 			evaluations.push({
 				time,
 				rate: get(snapshot, 'rate', 'number', 0),
-				cash: get(snapshot, 'rate', 'number', 0)
+				cash: get(snapshot, 'cash', 'number', 0)
 			})
 
 		return evaluations
