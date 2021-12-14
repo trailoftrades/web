@@ -20,7 +20,9 @@
 <svelte:head>
 	{#if active}
 		<title>
-			{$company ? `${name} - ${$company.name}` : 'Company not found'}
+			{$company
+				? `${path && `${name} - `}${$company.name}`
+				: 'Company not found'}
 		</title>
 	{/if}
 </svelte:head>
