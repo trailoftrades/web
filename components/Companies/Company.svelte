@@ -23,6 +23,7 @@
 <style lang="scss">
 	@use 'shared/colors';
 
+	$min-height: 30%;
 	$max-height: 90%;
 
 	$spacing: 1rem;
@@ -36,7 +37,7 @@
 		align-items: center;
 		position: relative;
 		width: 12rem;
-		height: calc(var(--cash) * #{$max-height});
+		height: calc(max(#{$min-height}, var(--cash) * #{$max-height}));
 		overflow: hidden;
 		margin-left: $spacing + $border-width;
 		padding: 0.7rem 0.75rem;
@@ -57,7 +58,7 @@
 		}
 
 		&:hover {
-			height: calc(var(--cash) * #{$max-height} + 0.5rem);
+			height: calc(max(#{$min-height}, var(--cash) * #{$max-height}) + 0.5rem);
 		}
 
 		&::before {
