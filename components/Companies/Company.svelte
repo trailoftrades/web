@@ -5,7 +5,7 @@
 	export let company: Company
 	export let maxCash: number
 
-	$: relativeCash = (company.cash ?? 0) / maxCash
+	$: relativeCash = Math.max(0, (company.cash ?? 0) / maxCash)
 </script>
 
 <a
