@@ -15,35 +15,34 @@
 	$: $position = ($resize, root && root.getBoundingClientRect())
 </script>
 
-<div class="root" bind:this={root}>
-	<nav>
-		<a href="/">Trail of Trades</a>
-		<Filters />
-		{#if $currentUser}
-			<UserInfo user={$currentUser} />
-		{:else}
-			<SignIn />
-		{/if}
-	</nav>
-</div>
+<nav bind:this={root}>
+	<a href="/">Trail of Trades</a>
+	<Filters />
+	{#if $currentUser}
+		<UserInfo user={$currentUser} />
+	{:else}
+		<SignIn />
+	{/if}
+</nav>
 
 <style lang="scss">
 	@use 'shared/colors';
 	@use 'shared/z-index';
 
-	.root {
-		flex-shrink: 0;
-		position: relative;
-		padding: 1rem 1.5rem;
-		z-index: z-index.$navigation;
-	}
-
 	nav {
+		$max-width: 87.5rem;
+		$horizontal-padding: 1.5rem;
+
+		flex-shrink: 0;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		max-width: 87.5rem;
+		position: relative;
+		max-width: $max-width + $horizontal-padding * 2;
+		width: 100%;
 		margin: 0 auto;
+		padding: 1rem $horizontal-padding;
+		z-index: z-index.$navigation;
 	}
 
 	a {

@@ -3,6 +3,7 @@
 
 	import company from '../../../lib/company/current'
 	import Pages from './Pages.svelte'
+	import Info from '../Info.svelte'
 </script>
 
 <div class="root">
@@ -13,6 +14,7 @@
 			<Times />
 		</a>
 	</nav>
+	<Info />
 </div>
 
 <style lang="scss">
@@ -21,6 +23,10 @@
 
 	.root {
 		position: relative;
+		max-width: 112.5rem;
+		width: 100%;
+		margin: 0 auto 2rem;
+		padding: 2rem 2.5rem;
 		z-index: z-index.$navigation;
 	}
 
@@ -28,8 +34,6 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		max-width: 112.5rem;
-		margin: 0 auto;
 	}
 
 	h1 {
