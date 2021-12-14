@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { TimeUnit } from 'chart.js'
 	import {
 		LineController,
 		LinearScale,
@@ -12,6 +13,7 @@
 	import Chart from './Base.svelte'
 
 	export let points: Point[]
+	export let unit: TimeUnit | null = 'day'
 </script>
 
 <Chart
@@ -24,7 +26,7 @@
 			scales: {
 				x: {
 					type: 'time',
-					time: { unit: 'day' }
+					time: { unit: unit ?? false }
 				}
 			}
 		}
