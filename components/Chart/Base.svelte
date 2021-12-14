@@ -1,15 +1,21 @@
 <script lang="ts">
 	import type {
 		ChartType,
-		ChartConfiguration,
+		ChartData,
+		ChartOptions,
 		ChartComponentLike
 	} from 'chart.js'
 	import { Chart } from 'chart.js'
 
-	type _Type = $$Generic
-	type Type = _Type & ChartType
+	type AnyType = $$Generic
+	type Type = AnyType & ChartType
 
-	export let options: ChartConfiguration<Type>
+	export let type: Type
+
+	export let data: ChartData<Type>
+	let previousData = data
+
+	export let options: ChartOptions<Type> | undefined = undefined
 	let previousOptions = options
 
 	export let components: ChartComponentLike[]
@@ -18,26 +24,23 @@
 	let chart: Chart<Type> | null = null
 
 	$: if (canvas) Chart.register(...components)
-	$: if (canvas && !chart) chart = new Chart(canvas, options)
+	$: if (canvas && !chart) chart = new Chart(canvas, { type, data, options })
 
-	$: if (options !== previousOptions) {
-		update()
-		previousOptions = options
-	}
-
-	const update = () => {
-		if (!chart) return
-
+	$: if (chart) {
 		let changed = false
 
-		if (options.data !== previousOptions.data) {
-			chart.data = options.data
+		if (data !== previousData) {
+			chart.data = previousData = data
 			changed = true
 		}
 
-		if (options.options && options.options !== previousOptions.options) {
-			chart.options = options.options
-			changed = true
+		if (options !== previousOptions) {
+			previousOptions = options
+
+			if (options) {
+				chart.options = options
+				changed = true
+			}
 		}
 
 		if (changed) chart.update()

@@ -17,17 +17,15 @@
 </script>
 
 <Chart
+	type="line"
+	data={{
+		datasets: [{ data: points }]
+	}}
 	options={{
-		type: 'line',
-		data: {
-			datasets: [{ data: points }]
-		},
-		options: {
-			scales: {
-				x: {
-					type: 'time',
-					time: { unit: unit ?? false }
-				}
+		scales: {
+			x: {
+				type: 'time',
+				time: { unit: unit ?? false }
 			}
 		}
 	}}
