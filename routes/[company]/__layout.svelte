@@ -8,9 +8,9 @@
 			if (!companyResponse.ok)
 				throw await HttpError.fromResponse(companyResponse)
 
-			const company: Company = await companyResponse.json()
+			const company: Company | null = await companyResponse.json()
 
-			if (company.owner) {
+			if (company?.owner) {
 				const ownerResponse = await fetch(
 					`/api/users/${encodeURIComponent(company.owner)}`
 				)

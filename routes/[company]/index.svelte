@@ -23,36 +23,29 @@
 	import type { Load } from '@sveltejs/kit'
 
 	import type Evaluation from '../../lib/company/evaluation'
-	import company from '../../lib/company/current'
 	import HttpError from '../../lib/error/http'
 	import UNKNOWN_ERROR_MESSAGE from '../../lib/error/unknown'
-	import Chart from '../../components/Chart/Time.svelte'
+	import EvaluationInfo from '../../components/Company/Evaluation.svelte'
 
 	export let evaluations: Evaluation[] | null
 </script>
 
 <div>
-	<p>Evaluation for {$company?.name ?? 'unknown company'}</p>
-	{#if evaluations}
-		<Chart
-			points={evaluations.map(({ time, rate }) => ({ x: time, y: rate }))}
-		/>
-		<Chart
-			points={evaluations.map(({ time, cash }) => ({ x: time, y: cash }))}
-		/>
-	{/if}
+	<EvaluationInfo property="rate" {evaluations} />
+	<EvaluationInfo property="cash" {evaluations} />
 </div>
 
 <style lang="scss">
-	@use 'shared/colors';
-
-	p {
-		margin-bottom: 1rem;
-		font-weight: 900;
-		color: colors.$black;
-	}
-
 	div {
-		padding: 0 2.5rem 2rem;
+		$horizontal-padding: 2.5rem;
+		$offset: 1%;
+
+		display: grid;
+		grid-auto-flow: column;
+		grid-template-rows: auto 1fr;
+		grid-auto-columns: 1fr;
+		gap: 1rem 2.5rem;
+		padding: 8rem calc($horizontal-padding - $offset) 2rem
+			calc($horizontal-padding + $offset);
 	}
 </style>

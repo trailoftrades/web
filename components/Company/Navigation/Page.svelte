@@ -25,7 +25,11 @@
 	{/if}
 </svelte:head>
 
-<a {href} aria-current={active ? 'page' : undefined}>
+<a
+	{href}
+	aria-current={active ? 'page' : undefined}
+	aria-disabled={!$company || undefined}
+>
 	<slot />
 	{name}
 </a>
@@ -64,5 +68,10 @@
 		&:hover {
 			opacity: 0.7;
 		}
+	}
+
+	[aria-disabled] {
+		pointer-events: none;
+		opacity: 0.5;
 	}
 </style>

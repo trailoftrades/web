@@ -8,7 +8,7 @@
 
 <div class="root">
 	<nav>
-		<h1>{$company?.name ?? 'Company not found'}</h1>
+		<h1>{$company?.name ?? 'Uh oh!'}</h1>
 		<Pages />
 		<a href="/">
 			<Times />
@@ -22,11 +22,11 @@
 	@use 'shared/z-index';
 
 	.root {
+		justify-self: center;
 		position: relative;
 		max-width: 112.5rem;
 		width: 100%;
-		margin: 0 auto;
-		padding: 2rem 2.5rem;
+		padding: 2rem 2.5rem 0;
 		z-index: z-index.$navigation;
 	}
 
