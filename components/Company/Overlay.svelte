@@ -2,10 +2,12 @@
 	import { fade } from 'svelte/transition'
 
 	import Navbar from './Navigation/Navbar.svelte'
+	import Info from './Info.svelte'
 </script>
 
 <main transition:fade={{ duration: 150 }}>
 	<Navbar />
+	<Info />
 	<slot />
 </main>
 

@@ -23,7 +23,7 @@
 	<slot name="trigger" {show} />
 	<div
 		class="content"
-		aria-hidden={!active}
+		aria-hidden={!active || undefined}
 		data-alignment={alignment}
 		bind:this={content}
 	>
@@ -36,20 +36,16 @@
 
 	.root {
 		position: relative;
-
-		&::before {
-			content: '';
-			position: fixed;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			pointer-events: none;
-		}
 	}
 
 	.active::before {
-		pointer-events: all;
+		content: '';
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 1;
 	}
 
 	.content {
@@ -57,17 +53,14 @@
 		top: 100%;
 		min-width: 100%;
 		margin-top: 0.5rem;
-		pointer-events: none;
-		transform: translateX(2rem);
-		opacity: 0;
 		z-index: z-index.$dropdown;
 		transition: transform 0.3s, opacity 0.3s;
 	}
 
-	[aria-hidden='false'] {
-		pointer-events: all;
-		transform: none;
-		opacity: 1;
+	[aria-hidden] {
+		pointer-events: none;
+		transform: translateX(2rem);
+		opacity: 0;
 	}
 
 	[data-alignment='left'] {

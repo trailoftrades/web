@@ -8,8 +8,8 @@
 <tr
 	role="button"
 	class:danger
-	aria-busy={loading}
-	aria-disabled={disabled}
+	aria-busy={loading || undefined}
+	aria-disabled={disabled || undefined}
 	on:click
 >
 	<td class="icon">
@@ -35,12 +35,12 @@
 		color: colors.$danger;
 	}
 
-	[aria-busy='true'],
-	[aria-disabled='true'] {
+	[aria-busy],
+	[aria-disabled] {
 		pointer-events: none;
 	}
 
-	[aria-disabled='true'] {
+	[aria-disabled] {
 		opacity: 0.5;
 	}
 

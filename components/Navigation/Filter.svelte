@@ -28,7 +28,7 @@
 	{/if}
 </svelte:head>
 
-<a {href} aria-current={active && 'page'}>
+<a {href} aria-current={active ? 'page' : undefined}>
 	<slot />
 	{name}
 </a>
@@ -62,7 +62,7 @@
 		}
 	}
 
-	[aria-current='page'] {
+	[aria-current] {
 		color: colors.$selected;
 
 		&:hover {

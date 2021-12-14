@@ -10,7 +10,7 @@
 	<link rel="preload" as="image" type="image/png" href={background} />
 </svelte:head>
 
-<main aria-hidden={$overlay}>
+<main aria-hidden={$overlay || undefined}>
 	<Navbar />
 	<Companies top={$navbar} bottom={$road} />
 	<Road />

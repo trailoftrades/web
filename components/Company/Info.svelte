@@ -5,27 +5,28 @@
 	import formatDate from '../../lib/format/date'
 </script>
 
-<div>
-	<h1>{$company?.name ?? 'Company not found'}</h1>
-	{#if $company?.created != null}
-		<h3>Since {formatDate($company.created)}</h3>
-	{/if}
-	{#if $companyOwner}
-		<h3 data-self={$currentUser?.id === $companyOwner.id}>
-			By {$companyOwner.name}
-		</h3>
-	{/if}
-</div>
+{#if $company?.created != null}
+	<h3>Since {formatDate($company.created)}</h3>
+{/if}
+
+{#if $companyOwner}
+	<h3 data-self={$currentUser?.id === $companyOwner.id || undefined}>
+		By {$companyOwner.name}
+	</h3>
+{/if}
 
 <style lang="scss">
 	@use 'shared/colors';
 
-	div {
+	h3 {
+		margin-top: 0.5rem;
+		font-size: 1.2rem;
+		font-weight: 900;
 		color: colors.$black;
 	}
 
-	h1 {
-		font-size: 3rem;
-		font-weight: 900;
+	[data-self]::after {
+		content: ' (you)';
+		opacity: 0.5;
 	}
 </style>
