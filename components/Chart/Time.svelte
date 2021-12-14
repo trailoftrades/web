@@ -23,9 +23,8 @@
 		options: {
 			scales: {
 				x: {
-					// @ts-expect-error
 					type: 'time',
-					distribution: 'linear'
+					time: { unit: 'day' }
 				}
 			}
 		}
