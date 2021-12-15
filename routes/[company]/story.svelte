@@ -2,7 +2,7 @@
 	import company from '../../lib/company/current'
 </script>
 
-<p>Operations for {$company?.name ?? 'unknown company'}</p>
+<p>{$company?.name ?? 'unknown company'}'s story</p>
 
 <style lang="scss">
 	@use 'shared/colors';

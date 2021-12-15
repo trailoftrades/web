@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Chart from 'svelte-icons/fa/FaChartLine.svelte'
-	import User from 'svelte-icons/fa/FaUserTie.svelte'
+	import Scroll from '../../../icons/Scroll.svelte'
 	import Cash from 'svelte-icons/fa/FaHandHoldingUsd.svelte'
 
 	import Page from './Page.svelte'
@@ -10,8 +10,8 @@
 	<Page name="Evaluation">
 		<Chart />
 	</Page>
-	<Page path="operations" name="Operations">
-		<User />
+	<Page path="story" name="Story">
+		<Scroll class="scroll" />
 	</Page>
 	<Page path="invest" name="Invest">
 		<Cash />
@@ -24,5 +24,9 @@
 		display: flex;
 		align-items: center;
 		margin: 0 1rem;
+	}
+
+	div :global > a > svg.scroll {
+		height: 1.4rem;
 	}
 </style>
