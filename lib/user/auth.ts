@@ -10,7 +10,7 @@ const userFromAuth = (user: FirebaseUser): User => {
 		name: user.displayName,
 		email: user.email,
 		cash: null,
-		created: creationTime ? new Date(creationTime).getMilliseconds() : null
+		created: creationTime ? new Date(creationTime).getTime() : null
 	}
 }
 
