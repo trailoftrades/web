@@ -59,7 +59,7 @@
 	}
 
 	[aria-label][data-balloon-pos] {
-		cursor: help;
+		cursor: default;
 
 		&::after {
 			font-weight: var(--balloon-font-weight);

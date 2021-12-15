@@ -73,7 +73,6 @@
 	.header > :global(.indicator) {
 		width: 2.2rem;
 		margin-left: 2rem;
-		color: colors.$black;
 		transform: translateY(0.1rem);
 	}
 

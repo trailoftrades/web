@@ -1,12 +1,17 @@
 <script lang="ts">
 	import minutes from '../../lib/date/minutes'
 
-	$: progress = $minutes / 60
+	const SPACING = 0.0001
+
+	$: remaining = 1 - $minutes / 60
+	$: remainingCount = Math.ceil(60 - $minutes)
 </script>
 
 <div
 	{...$$restProps}
-	aria-label="Countdown to the next paycheck"
+	aria-label="{remainingCount} minute{remainingCount === 1
+		? ''
+		: 's'} until the next paycheck"
 	data-balloon-pos="right"
 >
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -15,8 +20,8 @@
 				id="company-rate-indicator-progress"
 				gradientTransform="rotate(90)"
 			>
-				<stop offset={(1 - progress).toFixed(2)} stop-color="#9c9c9e" />
-				<stop offset={progress.toFixed(2)} stop-color="#12b412" />
+				<stop offset={remaining.toFixed(4)} stop-color="#9c9c9e" />
+				<stop offset={(remaining + SPACING).toFixed(4)} stop-color="#12b412" />
 			</linearGradient>
 		</defs>
 		<g fill="url(#company-rate-indicator-progress)">
