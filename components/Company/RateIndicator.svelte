@@ -1,17 +1,20 @@
 <script lang="ts">
 	import minutes from '../../lib/date/minutes'
 
+	const HOUR = 60
 	const SPACING = 0.0001
 
-	$: remaining = 1 - $minutes / 60
-	$: remainingCount = Math.ceil(60 - $minutes)
+	$: remaining = 1 - $minutes / HOUR
+	$: remainingCount = Math.ceil(HOUR - $minutes)
 </script>
 
 <div
 	{...$$restProps}
-	aria-label="{remainingCount} minute{remainingCount === 1
-		? ''
-		: 's'} until the next paycheck"
+	aria-label="{remainingCount === HOUR
+		? '1 hour'
+		: `${remainingCount} minute${
+				remainingCount === 1 ? '' : 's'
+		  }`} until the next paycheck"
 	data-balloon-pos="right"
 >
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
