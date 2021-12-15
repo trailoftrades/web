@@ -21,7 +21,7 @@
 		{/if}
 	</h4>
 	{#if property === 'rate'}
-		<RateIndicator />
+		<RateIndicator class="indicator" />
 	{/if}
 </div>
 
@@ -70,7 +70,7 @@
 		content: ' net worth';
 	}
 
-	.header > :global(svg) {
+	.header > :global(.indicator) {
 		width: 2.2rem;
 		margin-left: 2rem;
 		color: colors.$black;

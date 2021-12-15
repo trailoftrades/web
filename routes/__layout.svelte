@@ -11,6 +11,14 @@
 <slot />
 
 <style lang="scss" global>
+	@use 'balloon-css/balloon' as *;
+
+	:root {
+		--balloon-font-size: 1rem;
+		--balloon-font-weight: 700;
+		--balloon-border-radius: 0.25rem;
+	}
+
 	*,
 	::before,
 	::after {
@@ -48,5 +56,13 @@
 
 	svg {
 		display: block;
+	}
+
+	[aria-label][data-balloon-pos] {
+		cursor: help;
+
+		&::after {
+			font-weight: var(--balloon-font-weight);
+		}
 	}
 </style>
