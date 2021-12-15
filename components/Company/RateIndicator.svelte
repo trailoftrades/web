@@ -2,9 +2,6 @@
 	import minutes from '../../lib/date/minutes'
 
 	$: progress = $minutes / 60
-
-	$: current = progress * 100
-	$: remaining = (1 - progress) * 100
 </script>
 
 <div
@@ -18,8 +15,8 @@
 				id="company-rate-indicator-progress"
 				gradientTransform="rotate(90)"
 			>
-				<stop offset="{remaining.toFixed(2)}%" stop-color="#9c9c9e" />
-				<stop offset="{current.toFixed(2)}%" stop-color="#12b412" />
+				<stop offset={(1 - progress).toFixed(2)} stop-color="#9c9c9e" />
+				<stop offset={progress.toFixed(2)} stop-color="#12b412" />
 			</linearGradient>
 		</defs>
 		<g fill="url(#company-rate-indicator-progress)">
