@@ -27,7 +27,7 @@
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-svelte3": "^3.2.1",
 		"firebase": "^9.6.1",
-		"firebase-admin": "^10.0.0",
+		"firebase-admin": "^10.0.1",
 		"nprogress": "^0.2.0",
 		"prettier": "^2.5.1",
 		"prettier-plugin-svelte": "^2.5.1",
