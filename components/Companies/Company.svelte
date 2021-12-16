@@ -10,10 +10,7 @@
 
 <a
 	href={`/${encodeURIComponent(company.id)}`}
-	style="
-		--cash: {relativeCash.toFixed(2)};
-		--color: {company.color};
-	"
+	style="--cash: {relativeCash.toFixed(2)}; --color: {company.color};"
 >
 	<span class="name">{company.name}</span>
 	<span class="rate">{formatNumber(company.rate ?? 0)}</span>
