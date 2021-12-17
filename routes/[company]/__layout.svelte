@@ -1,28 +1,17 @@
 <script lang="ts" context="module">
 	export const load: Load = async ({ page, fetch }) => {
 		try {
-			const companyResponse = await fetch(
-				`/api/companies/${encodeURIComponent(page.params.company)}`
+			const response = await fetch(
+				`/api/companies/${encodeURIComponent(page.params.company)}?owner`
 			)
 
-			if (!companyResponse.ok)
-				throw await HttpError.fromResponse(companyResponse)
+			if (!response.ok) throw await HttpError.fromResponse(response)
 
-			const company: Company | null = await companyResponse.json()
+			const company: CompanyWithOwner | null = await response.json()
+			const owner = company && company.owner
 
-			if (company?.owner) {
-				const ownerResponse = await fetch(
-					`/api/users/${encodeURIComponent(company.owner)}`
-				)
-
-				if (!ownerResponse.ok) throw await HttpError.fromResponse(ownerResponse)
-
-				companyOwner.set(await ownerResponse.json())
-			} else {
-				companyOwner.set(null)
-			}
-
-			initialCompany.set(company)
+			initialCompany.set(company && { ...company, owner: owner && owner.id })
+			companyOwner.set(owner)
 
 			return {}
 		} catch (error) {
@@ -37,7 +26,7 @@
 <script lang="ts">
 	import type { Load } from '@sveltejs/kit'
 
-	import type Company from '../../lib/company'
+	import type CompanyWithOwner from '../../lib/company/owner/with'
 	import initialCompany from '../../lib/company/current/initial'
 	import companyOwner from '../../lib/company/owner'
 	import overlay from '../../lib/overlay'

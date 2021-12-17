@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store'
 
-import type User from '../user'
+import type User from '../../user'
 
 /**
  * - `User`: Successfully loaded user.
